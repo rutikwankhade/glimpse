@@ -39,7 +39,7 @@ export default function Home() {
         <Dialog
           open={isOpen}
           onClose={setIsOpen}
-          className={isOpen ? 'bg-gray-50  h-screen p-10 tansform -translate-y-20 flex  justify-center' : ''}
+          className={isOpen ? ' h-screen p-10 tansform -translate-y-20 flex  justify-center' : ''}
         >
 
           <Dialog.Overlay className="fixed inset-0 -z-10 opacity-30" />
