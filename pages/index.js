@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
 
 export default function Home() {
 
@@ -7,6 +8,7 @@ export default function Home() {
   const [term, setTerm] = useState('')
   const [response, setResponse] = useState([])
   const [timeoutId, setTimeoutId] = useState()
+  const [isOpen, setIsOpen] = useState(false)
 
   const getBooks = async (term) => {
     const response = await fetch(
@@ -34,29 +36,59 @@ export default function Home() {
 
       <main className="">
 
+        <Dialog
+          open={isOpen}
+          onClose={setIsOpen}
+          className={isOpen ? 'bg-gray-50  h-screen p-10 tansform -translate-y-20 flex  justify-center' : ''}
+        >
 
-        <div className="flex items-center m-20 justify-center">
-          <input
-            placeholder="Search"
-            className="p-6 bg-slate-50 shadow-slate-200 shadow-xl  text-2xl rounded-xl w-8/12 outline-none"
-            onChange={(e) => handleInputChange(e.target.value)}
-          />
-        </div>
+          <Dialog.Overlay className="fixed inset-0 -z-10 opacity-30" />
 
-        <div className="flex  items-center justify-center ">
-          <div className="flex flex-row flex-wrap justify-center">
-            {response.map(book => {
-              return (
-                <div key={book.accessInfo.id}
-                  className="flex border m-2 p-4 w-1/4 shadow-sm rounded-xl "
-                >
-                  <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-1/3  shadow-xl" />
-                  <h1 className="text-xl font-semibold ml-4">{book.volumeInfo.title}</h1>
-                </div>
-              )
-            })}
+          <div className="flex flex-col w-10/12 z-10 opacity-100 border p-10  rounded-xl  bg-white">
+
+
+
+            <input
+              placeholder="Search book by name or author"
+              className="p-4 w-10/12 mx-auto flex m-2  text-xl text-gray-600 shadow-gray-50 shadow-xl rounded-xl border outline-none"
+              onChange={(e) => handleInputChange(e.target.value)}
+            />
+
+
+            {/* <button className="border rounded-full p-2 text-2xl h-10 w-10" onClick={() => setIsOpen(false)}>X</button> */}
+
+
+            <div className=" overflow-y-scroll h-84 ">
+              <div className="flex flex-row flex-wrap justify-center ">
+                {response.map(book => {
+                  return (
+                    <div key={book.accessInfo.id}
+                      className="flex border m-2 p-4 w-4/12 h-auto shadow-sm rounded-xl "
+                    >
+                      <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-1/3   shadow-xl shadow-slate-200 border" />
+                      <h1 className="text-xl font-semibold ml-4">{book.volumeInfo.title}</h1>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
           </div>
+
+
+        </Dialog>
+
+        <div className="">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-3xl bg-yellow-200 p-2 m-2 rounded-full"
+          >🔍</button>
+
+
+
+
         </div>
+
 
 
       </main>
