@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -62,12 +63,14 @@ export default function Home() {
               <div className="flex flex-row flex-wrap justify-center ">
                 {response.map(book => {
                   return (
+                    <Link href={`/books/${book.id}`}>
                     <div key={book.accessInfo.id}
                       className="flex border m-2 p-4 w-4/12 h-auto shadow-sm rounded-xl "
                     >
                       <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-1/3   shadow-xl shadow-slate-200 border" />
                       <h1 className="text-xl font-semibold ml-4">{book.volumeInfo.title}</h1>
-                    </div>
+                      </div>
+                      </Link>
                   )
                 })}
               </div>
