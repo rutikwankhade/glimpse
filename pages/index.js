@@ -43,7 +43,20 @@ export default function Home() {
           />
         </div>
 
-     
+        <div className="flex  items-center justify-center ">
+          <div className="flex flex-row flex-wrap justify-center">
+            {response.map(book => {
+              return (
+                <div key={book.accessInfo.id}
+                  className="flex border m-2 p-4 w-1/4 shadow-sm rounded-xl "
+                >
+                  <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-1/3  shadow-xl" />
+                  <h1 className="text-xl font-semibold ml-4">{book.volumeInfo.title}</h1>
+                </div>
+              )
+            })}
+          </div>
+        </div>
 
 
       </main>
