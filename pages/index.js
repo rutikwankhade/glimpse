@@ -43,7 +43,7 @@ export default function Home() {
           className={isOpen ? ' h-screen p-10 tansform -translate-y-20 flex  justify-center' : ''}
         >
 
-          <Dialog.Overlay className="fixed inset-0 -z-10 opacity-30" />
+          <Dialog.Overlay className="fixed backdrop-blur-lg bg-gray-50 inset-0 -z-10 opacity-30" />
 
           <div className="flex flex-col w-10/12 z-10 opacity-100 border p-10  rounded-xl  bg-white">
 
