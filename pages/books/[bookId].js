@@ -23,6 +23,8 @@ const BookInfo = (params) => {
 
 
 
+
+
     return (
         <div className="bg-gray-50 w-full items-center justify-center">
             <Transition appear show={isOpen}>
@@ -64,33 +66,44 @@ const BookInfo = (params) => {
                             leaveTo="opacity-0 scale-95"
                         >
 
-                            <div className=" inline-block w-full max-w-4xl max-h-screen h-full p-10 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                            <div className=" inline-block w-full max-w-5xl max-h-screen h-full p-10 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <div className="flex">
 
-                                    <textarea
-                                        placeholder="Search book by name or author"
-                                        className="p-4 w-1/3 h-96 mx-auto flex   text-xl text-gray-600 shadow-gray-50 shadow-xl rounded-xl border outline-none"
-                                        onChange={(e) => handleInputChange(e.target.value)}
-                                    />
-
-                                    <div className="bg-purple-200 rounded h-96 w-2/3 flex itens-center justify-center ">
 
 
-                                        <div className="w-2/3">
+                                    <div className="bg-pink-100 rounded h-96 w-2/3 flex flex-col ">
 
-                                            <p className="font-sans  p-4 z-40 text-xl font-semibold text-gray-600">Deep Work was a solid self-help/productivity book. Being a podcast junkie, I had heard the majority of things that Newport preaches in his book. However, I really appreciated his practical applications of how to enter into Deep Work, or 'the zone' as I call it.</p>
+                                        <div className="flex items-center justify-center ">
+
+
+                                            <div className="w-2/3  m-4">
+
+                                                <textarea
+                                                    placeholder="What did you loved most about this book? share your thoughts."
+                                                    className="w-full bg-pink-200  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
+                                                    // onChange={(e) => handleInputChange(e.target.value)}
+                                                />
+
+
+                                            </div>
+                                            <img
+                                                src={info && info.volumeInfo.imageLinks.thumbnail}
+                                                className="w-max h-max border m-4  shadow-xl "
+
+                                            />
+                                        </div>
+
+
+                                        <div className="flex items-center mx-8">
+                                            <h1 className="text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}&rarr;</h1>
+                                            <span className="ml-auto">{info && info.volumeInfo.categories.map(category => <span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{category}</span>)}</span>
 
                                         </div>
-                                        <img
-                                            src={info && info.volumeInfo.imageLinks.thumbnail}
-                                            className="w-max h-max border m-4 mt-auto mb-4 "
-
-                                        />
 
                                     </div>
 
                                 </div>
-                           </div>
+                            </div>
                         </Transition.Child>
 
                     </div>
