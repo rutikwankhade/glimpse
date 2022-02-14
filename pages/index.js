@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import searchIcon from '../assets/icons/bx-search.svg'
-
+import cover from '../assets/images/cover.jpg'
 
 export default function Home() {
 
@@ -103,7 +103,13 @@ export default function Home() {
                           <Link href={`/books/${book.id}`} >
                             <div key={book.accessInfo.id}
                               className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/4 items-center h-auto shadow-sm rounded-xl ">
-                              <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+
+                              {book.volumeInfo.imageLinks ?
+                                <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                                :
+                                <Image src={cover} />
+
+                              }
                               <h1 className="text-xl text-center text-gray-700 font-semibold mt-4">{book.volumeInfo.title}</h1>
                             </div>
                           </Link>

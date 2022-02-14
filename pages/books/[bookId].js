@@ -152,7 +152,7 @@ const BookInfo = (params) => {
                         <img src={info && info.volumeInfo.imageLinks.thumbnail} />
                     </div>
 
-                    <div className="w-2/3 m-6">
+                    <div className="w-max  m-6">
                         <h1 className="text-4xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
                         <p className="text-xl text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
 
@@ -167,7 +167,7 @@ const BookInfo = (params) => {
                         <div className="mt-6 flex">
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className=" text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">✨ Share a glimpse</button>
+                                className="mr-4 text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">✨ Share a glimpse</button>
 
                             <button className="text-3xl p-1  border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>🔖</span></button>
                             <button className="p-1 text-3xl border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span >📖</span></button>
