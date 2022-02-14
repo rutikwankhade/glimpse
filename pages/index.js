@@ -1,7 +1,9 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
+import { useState, Fragment } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
+import Image from 'next/image'
+import searchIcon from '../assets/icons/bx-search.svg'
 
 export default function Home() {
 
@@ -29,7 +31,7 @@ export default function Home() {
 
 
   return (
-    <div className="">
+    <div className="bg-gray-50 w-full ">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -37,49 +39,95 @@ export default function Home() {
 
       <main className="">
 
-        <Dialog
-          open={isOpen}
-          onClose={setIsOpen}
-          className={isOpen ? ' h-screen p-10 tansform -translate-y-20 flex  justify-center' : ''}
-        >
 
-          <Dialog.Overlay className="fixed backdrop-blur-lg bg-gray-50 inset-0 -z-10 opacity-30" />
+        <Transition appear show={isOpen}>
 
-          <div className="flex flex-col w-10/12 z-10 opacity-100 border p-10  rounded-xl  bg-white">
+          <Dialog
+            as="div"
+            onClose={setIsOpen}
+            className="fixed inset-0 z-10 "
+          >
+            <div className=" px-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Dialog.Overlay className="fixed inset-0" />
+              </Transition.Child>
+
+              <span
+                className=" align-middle"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
+
+
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+
+
+                <div className=" inline-block w-full max-w-5xl  p-10 my-8  text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+
+                  <div className="flex p-4 items-center w-10/12  m-2 mx-auto border bg-gray-50 shadow-gray-50 shadow-xl rounded-xl">
+                    <Image src={searchIcon} />
+
+                    <input
+                      placeholder="Search book by name or author"
+                      className=" w-full ml-2 bg-gray-50 flex text-xl text-gray-600  outline-none"
+                      onChange={(e) => handleInputChange(e.target.value)}
+                    />
+                  </div>
+
+
+                  <div className=" overflow-y-scroll h-96 ">
+                    <div className="flex flex-row flex-wrap justify-center ">
+                      {response.map(book => {
+                        return (
+                          <Link href={`/books/${book.id}`} >
+                            <div key={book.accessInfo.id}
+                              className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/4 items-center h-auto shadow-sm rounded-xl "
+                            >
+                              <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                              <h1 className="text-xl text-center text-gray-700 font-semibold mt-4">{book.volumeInfo.title}</h1>
+                            </div>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+
+                </div>
+              </Transition.Child>
 
 
 
-            <input
-              placeholder="Search book by name or author"
-              className="p-4 w-10/12 mx-auto flex m-2  text-xl text-gray-600 shadow-gray-50 shadow-xl rounded-xl border outline-none"
-              onChange={(e) => handleInputChange(e.target.value)}
-            />
 
 
-            {/* <button className="border rounded-full p-2 text-2xl h-10 w-10" onClick={() => setIsOpen(false)}>X</button> */}
+              {/* <button className="border rounded-full p-2 text-2xl h-10 w-10" onClick={() => setIsOpen(false)}>X</button> */}
 
 
-            <div className=" overflow-y-scroll h-84 ">
-              <div className="flex flex-row flex-wrap justify-center ">
-                {response.map(book => {
-                  return (
-                    <Link href={`/books/${book.id}`}>
-                    <div key={book.accessInfo.id}
-                      className="flex border m-2 p-4 w-4/12 h-auto shadow-sm rounded-xl "
-                    >
-                      <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-1/3   shadow-xl shadow-slate-200 border" />
-                      <h1 className="text-xl font-semibold ml-4">{book.volumeInfo.title}</h1>
-                      </div>
-                      </Link>
-                  )
-                })}
-              </div>
+
+
             </div>
 
-          </div>
 
+          </Dialog>
 
-        </Dialog>
+        </Transition>
 
         <div className="">
           <button

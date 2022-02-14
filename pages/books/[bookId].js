@@ -29,7 +29,8 @@ const BookInfo = (params) => {
 
 
     const handlePostSubmit = () => {
-        console.log(info, postText)
+        console.log(info, postText, bgColor)
+        setIsOpen(false)
     }
 
 
