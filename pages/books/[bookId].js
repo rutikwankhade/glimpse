@@ -1,9 +1,15 @@
 import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
+import { getRandomColor } from '../../utils/utils'
+
 const BookInfo = (params) => {
     const [info, setInfo] = useState()
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [postText, setPostText] = useState('')
+    const [bgColor, setBgColor] = useState({ p1: '#f2f2f2', p2: "#f2f2f2" })
+
+
 
 
     const getBookInfo = async (term) => {
@@ -22,7 +28,9 @@ const BookInfo = (params) => {
     }, [])
 
 
-
+    const handlePostSubmit = () => {
+        console.log(info, postText)
+    }
 
 
     return (
@@ -67,11 +75,13 @@ const BookInfo = (params) => {
                         >
 
                             <div className=" inline-block w-full max-w-5xl max-h-screen h-full p-10 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                                <div className="flex">
+                                <div className="flex flex-col items-center">
 
 
 
-                                    <div className="bg-pink-100 rounded h-96 w-2/3 flex flex-col ">
+                                    <div className=" rounded h-96 w-2/3 flex flex-col"
+                                        style={{ backgroundColor: bgColor.p1 }}
+                                    >
 
                                         <div className="flex items-center justify-center ">
 
@@ -80,8 +90,11 @@ const BookInfo = (params) => {
 
                                                 <textarea
                                                     placeholder="What did you loved most about this book? share your thoughts."
-                                                    className="w-full bg-pink-200  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
-                                                    // onChange={(e) => handleInputChange(e.target.value)}
+                                                    className="w-full bg-green-100  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
+                                                    onChange={(e) => setPostText(e.target.value)}
+                                                    value={postText}
+                                                    style={{ backgroundColor: bgColor.p2 }}
+
                                                 />
 
 
@@ -101,6 +114,25 @@ const BookInfo = (params) => {
                                         </div>
 
                                     </div>
+
+                                    <div className="flex items-center ">
+                                        <button
+                                            onClick={() => {
+                                                const color = getRandomColor()
+                                                setBgColor(color);
+                                            }}
+                                            className="bg-gray-50 h-max p-2 border rounded">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 17h-1.559l-9.7-10.673A1 1 0 0 0 5.001 6H2v2h2.559l4.09 4.5-4.09 4.501H2v2h3.001a1 1 0 0 0 .74-.327L10 13.987l4.259 4.686a1 1 0 0 0 .74.327H17v3l5-4-5-4v3z"></path><path d="M15.441 8H17v3l5-3.938L17 3v3h-2.001a1 1 0 0 0-.74.327l-3.368 3.707 1.48 1.346L15.441 8z"></path></svg>
+                                        </button>
+
+
+                                        <button
+                                            onClick={() => handlePostSubmit()}
+                                            className="text-white bg-gray-700 px-6 p-2 rounded-lg text-xl h-max m-10"
+                                        >Submit</button>
+
+                                    </div>
+
 
                                 </div>
                             </div>
