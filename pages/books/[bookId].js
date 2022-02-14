@@ -40,8 +40,14 @@ const BookInfo = (params) => {
                         </div>
 
 
-                        <div className="mt-6">
+                        <div className="mt-6 flex">
                             <button className=" text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">✨ Share a glimpse</button>
+
+                            <button className="text-3xl p-1  border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>🔖</span></button>
+                            <button className="p-1 text-3xl border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span >📖</span></button>
+                            <button className="text-3xl p-1 border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>✅</span></button>
+
+
                         </div>
                     </div>
                 </div> :
