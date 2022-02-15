@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import { categories } from '../../../services/books'
+import Link from 'next/link'
+import Image from 'next/image'
+
+import cover from '../../../assets/images/cover.jpg'
 
 const Category = (params) => {
     const [response, setResponse] = useState()
@@ -36,6 +40,27 @@ const Category = (params) => {
                 <span className="border rounded-xl p-4 h-24 w-24 bg-white">{emoji}</span>
 
                 <h1 className=" font-bold ml-4 capitalize text-gray-800">{params.params.category}</h1>
+            </div>
+
+
+            <div className="flex flex-row flex-wrap justify-center bg-white pt-6">
+                {response && response.map(book => {
+                    return (
+                        <Link href={`/books/${book.id}`} >
+                            <div key={book.accessInfo.id}
+                                className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/5 items-center h-auto shadow-sm rounded-xl ">
+
+                                {book.volumeInfo.imageLinks ?
+                                    <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                                    :
+                                    <Image src={cover} />
+
+                                }
+                                <h1 className="text-xl text-center text-gray-700 font-semibold py-4 mt-auto  h-20 overflow-hidden">{book.volumeInfo.title}</h1>
+                            </div>
+                        </Link>
+                    )
+                })}
             </div>
 
         </div>
