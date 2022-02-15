@@ -9,17 +9,17 @@ const AllCategories = () => {
             <div className="bg-gray-50 p-6">
                 <h1 className=" text-4xl font-bold ml-4 capitalize text-gray-800">Find books by category</h1>
             </div>
-            <div className="flex flex-row flex-wrap justify-center ">
+            <div className="flex flex-row w-10/12 py-2 flex-wrap justify-center ">
 
                 {
-                    categories.map(category => {
+                    categories.sort((a, b) => a.name.localeCompare(b.name)).map(category => {
                         return (
                             <Link href={`/books/category/${category.name}`} >
-                                <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">
+                                <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-2 rounded-xl">
                                     <span className="text-5xl m-2">
                                         {category.emoji}
                                     </span>
-                                    <h2 className="text-xl capitalize">{category.name}</h2>
+                                    <h2 className="text-xl font-semibold capitalize">{category.name}</h2>
                                 </div>
                             </Link>
 

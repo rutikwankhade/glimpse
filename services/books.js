@@ -35,8 +35,43 @@ export const categories = [
        
     },
     {
-        emoji: '🌼',
+        emoji: '☯',
         name: 'spirituality',
+       
+    },
+    {
+        emoji: '🎨',
+        name: 'art',
+       
+    },
+    {
+        emoji: '🌌',
+        name: 'fantasy',
+       
+    },
+    {
+        emoji: '📜',
+        name: 'history',
+       
+    },
+    {
+        emoji: '🔮',
+        name: 'mystery',
+       
+    },
+    {
+        emoji: '📿',
+        name: 'religion',
+       
+    },
+    {
+        emoji: '🛠',
+        name: 'technology',
+       
+    },
+    {
+        emoji: '🌻',
+        name: 'self',
        
     },
 ]
