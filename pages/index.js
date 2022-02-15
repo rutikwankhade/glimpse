@@ -127,7 +127,7 @@ export default function Home() {
                                 <span className="text-5xl m-2">
                                   {category.emoji}
                                 </span>
-                                <h2 className="text-xl capitalize">{category.name}</h2>
+                                <h2 className="text-xl font-semibold capitalize">{category.name}</h2>
                               </div>
                             </Link>
 
@@ -136,6 +136,15 @@ export default function Home() {
                       }
 
                     </div>
+                    
+                    <div className=" flex  mx-auto text-center">
+<Link href="/books/allcategories" >
+                      <a className="px-6 text-center mx-auto hover:bg-gray-100 p-2 rounded-lg text-sm">
+                      All Categories &rarr;
+                    </a></Link>
+                    </div>
+
+                    
                   </div>
 
                 </div>
