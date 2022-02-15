@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     <Header/>
 
     <div className="flex w-full">
-       <Sidebar className=" bg-gray-50 fixed top-0"/>
+       {/* <Sidebar className=" bg-gray-50 fixed top-0"/> */}
     <Component {...pageProps} className="w-full overflow-scroll" />
 
     </div>
