@@ -116,3 +116,25 @@ export const handleReviewSubmit = async (bookInfo) => {
     }
 
 }
+
+
+export const getAllBookReviews= async ()=>{
+    try {
+        let { data, error, status } = await supabase
+            .from('bookreviews')
+            .select()
+          
+
+           
+        if (error && status !== 406) {
+            throw error;
+        }
+        console.log(data)
+
+        if (data) {
+            return data
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}

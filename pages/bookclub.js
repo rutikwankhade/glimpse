@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { categories } from '../services/books'
+import { categories, getAllBookReviews } from '../services/books'
+
 
 import searchIcon from '../assets/icons/bx-search.svg'
 import cover from '../assets/images/cover.jpg'
@@ -16,6 +17,9 @@ export default function BookClub() {
   const [isOpen, setIsOpen] = useState(false)
 
 
+  useEffect(() => {
+    getAllBookReviews()
+  })
 
   const getBooks = async (term) => {
     const response = await fetch(
