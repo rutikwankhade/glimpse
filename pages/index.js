@@ -118,7 +118,7 @@ export default function Home() {
                       })}
 
                       {
-                        categories.slice(0,8).map(category => {
+                        categories.slice(0, 8).map(category => {
                           return (
                             <Link href={`/books/category/${category.name}`} >
 
@@ -136,15 +136,15 @@ export default function Home() {
                       }
 
                     </div>
-                    
+
                     <div className=" flex  mx-auto text-center">
-<Link href="/books/allcategories" >
-                      <a className="px-6 text-center mx-auto hover:bg-gray-100 p-2 rounded-lg text-sm">
-                      All Categories &rarr;
-                    </a></Link>
+                      <Link href="/books/allcategories" >
+                        <a className="px-6 text-center mx-auto hover:bg-gray-100 p-2 rounded-lg text-sm">
+                          All Categories &rarr;
+                        </a></Link>
                     </div>
 
-                    
+
                   </div>
 
                 </div>
