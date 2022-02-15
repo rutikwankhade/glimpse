@@ -3,7 +3,7 @@ import { useState, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import Image from 'next/image'
-import {categories} from '../services/books'
+import { categories } from '../services/books'
 
 import searchIcon from '../assets/icons/bx-search.svg'
 import cover from '../assets/images/cover.jpg'
@@ -119,12 +119,19 @@ export default function Home() {
 
                       {
                         categories.map(category => {
-                          return <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">
-                            <span className="text-5xl m-2">
-                              { category.emoji}
-                            </span>
-                            <h2 className="text-xl capitalize">{category.name}</h2>
-                          </div>
+                          return (
+                            <Link href={`/books/category/${category.name}`} >
+
+
+                              <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">
+                                <span className="text-5xl m-2">
+                                  {category.emoji}
+                                </span>
+                                <h2 className="text-xl capitalize">{category.name}</h2>
+                              </div>
+                            </Link>
+
+                          )
                         })
                       }
 
