@@ -2,12 +2,12 @@ import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 import { getRandomColor } from '../../utils/utils'
-
+import { handleReviewSubmit } from '../../services/books'
 const BookInfo = (params) => {
     const [info, setInfo] = useState()
     const [isOpen, setIsOpen] = useState(false);
     const [postText, setPostText] = useState('')
-    const [bgColor, setBgColor] = useState({ p1: '#f2f2f2', p2: "#f2f2f2" })
+    const [bgColor, setBgColor] = useState({ primaryColor: '#f2f2f2', secondaryColor: "#f2f2f2" })
 
 
 
@@ -29,7 +29,18 @@ const BookInfo = (params) => {
 
 
     const handlePostSubmit = () => {
-        console.log(info, postText, bgColor)
+
+        const bookInfo = {
+            theme: bgColor,
+            review: postText,
+            bookId: info.id,
+            category: info.volumeInfo.categories[0],
+            cover: info.volumeInfo.imageLinks.thumbnail,
+            title:info.volumeInfo.title
+        }
+
+handleReviewSubmit(bookInfo)
+        // console.log(data)
         setIsOpen(false)
     }
 
@@ -81,7 +92,7 @@ const BookInfo = (params) => {
 
 
                                     <div className=" rounded h-96 w-2/3 flex flex-col"
-                                        style={{ backgroundColor: bgColor.p1 }}
+                                        style={{ backgroundColor: bgColor.primaryColor }}
                                     >
 
                                         <div className="flex items-center justify-center ">
@@ -94,7 +105,7 @@ const BookInfo = (params) => {
                                                     className="w-full bg-green-100  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
                                                     onChange={(e) => setPostText(e.target.value)}
                                                     value={postText}
-                                                    style={{ backgroundColor: bgColor.p2 }}
+                                                    style={{ backgroundColor: bgColor.secondaryColor }}
 
                                                 />
 
