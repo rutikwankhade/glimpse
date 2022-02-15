@@ -6,8 +6,8 @@ const AllCategories = () => {
     return (
         <div>
 
-            <div className="bg-gray-50 p-6">
-                <h1 className=" text-4xl font-bold ml-4 capitalize text-gray-800">Find books by category</h1>
+            <div className="bg-gray-50 p-4">
+                <h1 className=" text-3xl font-bold ml-4 capitalize text-gray-800">Find books by category</h1>
             </div>
             <div className="flex flex-row w-10/12 py-2 flex-wrap justify-center ">
 

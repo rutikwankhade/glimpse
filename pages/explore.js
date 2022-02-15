@@ -1,6 +1,6 @@
 const explore = () => {
     return (
-        <div>
+        <div className="w-full">
             feed
         </div>
       );
