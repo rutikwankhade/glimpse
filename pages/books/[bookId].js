@@ -1,13 +1,24 @@
 import { useState, useEffect, Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition, Listbox } from '@headlessui/react'
 
 import { getRandomColor } from '../../utils/utils'
 import { handleReviewSubmit } from '../../services/books'
+
+
+const options = [
+    { id: 1, type: '🔖 Want to read' },
+    { id: 2, type: '📖 Currently reading' },
+    { id: 3, type: '✅ Read' }
+]
+
+
 const BookInfo = (params) => {
     const [info, setInfo] = useState()
     const [isOpen, setIsOpen] = useState(false);
     const [postText, setPostText] = useState('')
     const [bgColor, setBgColor] = useState({ primaryColor: '#f2f2f2', secondaryColor: "#f2f2f2" })
+
+    const [selectedOption, setSelectedOption] = useState(options[0])
 
 
 
@@ -36,10 +47,10 @@ const BookInfo = (params) => {
             bookId: info.id,
             category: info.volumeInfo.categories[0],
             cover: info.volumeInfo.imageLinks.thumbnail,
-            title:info.volumeInfo.title
+            title: info.volumeInfo.title
         }
 
-handleReviewSubmit(bookInfo)
+        handleReviewSubmit(bookInfo)
         // console.log(data)
         setIsOpen(false)
     }
@@ -152,9 +163,9 @@ handleReviewSubmit(bookInfo)
 
 
             {info ?
-                <div className="border m-4 p-10 w-8/12 bg-white rounded-xl mx-auto flex flex-row items-center">
-                    <div className="-skew-y-6 border w-max h-max p-2 rounded-md  shadow-xl  border-l-8   ">
-                        <img src={info && info.volumeInfo.imageLinks.thumbnail} />
+                <div className="border m-4 p-10 w-8/12 h-80 bg-white rounded-xl mx-auto flex flex-row ">
+                    <div className="-skew-y-6 border flex-initial p-2 rounded-md h-max shadow-xl  border-l-8   ">
+                        <img src={info && info.volumeInfo.imageLinks.thumbnail} className="w-max h-max"/>
                     </div>
 
                     <div className="w-max  m-6">
@@ -172,12 +183,36 @@ handleReviewSubmit(bookInfo)
                         <div className="mt-6 flex">
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className="mr-4 text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">✨ Share a glimpse</button>
+                                className="mr-4 h-12 text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">
+                                ✨ Share a glimpse
+                            </button>
 
-                            <button className="text-3xl p-1  border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>🔖</span></button>
+                            {/* <button className="text-3xl p-1  border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>🔖</span></button>
                             <button className="p-1 text-3xl border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span >📖</span></button>
-                            <button className="text-3xl p-1 border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>✅</span></button>
+                            <button className="text-3xl p-1 border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>✅</span></button> */}
 
+
+
+                            <Listbox
+                                value={selectedOption}
+                                onChange={setSelectedOption}
+                                className="flex flex-col w-60  text-left"
+                                as="div"
+                            >
+                                <Listbox.Button className="border  px-4 p-2 text-xl rounded"
+                                >{selectedOption.type}</Listbox.Button>
+                                <Listbox.Options className="border bg-white rounded shadow-lg ">
+                                    {options.map((option) => (
+                                        <Listbox.Option
+                                            key={option.id}
+                                            value={option}
+                                            className="p-2 hover:bg-yellow-200"
+                                        >
+                                            {option.type}
+                                        </Listbox.Option>
+                                    ))}
+                                </Listbox.Options>
+                            </Listbox>
 
                         </div>
                     </div>
