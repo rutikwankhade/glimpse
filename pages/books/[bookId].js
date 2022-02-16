@@ -94,27 +94,21 @@ handleReviewSubmit(bookInfo)
                                     <div className=" rounded h-96 w-2/3 flex flex-col"
                                         style={{ backgroundColor: bgColor.primaryColor }}
                                     >
-
                                         <div className="flex items-center justify-center ">
 
-
                                             <div className="w-2/3  m-4">
-
                                                 <textarea
                                                     placeholder="What did you loved most about this book? share your thoughts."
                                                     className="w-full bg-green-100  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
                                                     onChange={(e) => setPostText(e.target.value)}
                                                     value={postText}
                                                     style={{ backgroundColor: bgColor.secondaryColor }}
-
                                                 />
-
 
                                             </div>
                                             <img
                                                 src={info && info.volumeInfo.imageLinks.thumbnail}
                                                 className="w-max h-max border m-4  shadow-xl "
-
                                             />
                                         </div>
 

@@ -129,7 +129,6 @@ export const getAllBookReviews= async ()=>{
         if (error && status !== 406) {
             throw error;
         }
-        console.log(data)
 
         if (data) {
             return data
