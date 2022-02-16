@@ -6,9 +6,9 @@ import { handleReviewSubmit } from '../../services/books'
 
 
 const options = [
-    { id: 1, type: '🔖 Want to read' },
-    { id: 2, type: '📖 Currently reading' },
-    { id: 3, type: '✅ Read' }
+    { id: 1, emoji: '🔖', type: 'Want to read' },
+    { id: 2, emoji: '📖', type: 'Currently reading' },
+    { id: 3, emoji: '✅', type: 'Read' }
 ]
 
 
@@ -165,7 +165,7 @@ const BookInfo = (params) => {
             {info ?
                 <div className="border m-4 p-10 w-8/12 h-80 bg-white rounded-xl mx-auto flex flex-row ">
                     <div className="-skew-y-6 border flex-initial p-2 rounded-md h-max shadow-xl  border-l-8   ">
-                        <img src={info && info.volumeInfo.imageLinks.thumbnail} className="w-max h-max"/>
+                        <img src={info && info.volumeInfo.imageLinks.thumbnail} className="w-max h-max" />
                     </div>
 
                     <div className="w-max  m-6">
@@ -200,7 +200,7 @@ const BookInfo = (params) => {
                                 as="div"
                             >
                                 <Listbox.Button className="border  px-4 p-2 text-xl rounded"
-                                >{selectedOption.type}</Listbox.Button>
+                                ><span className="mx-2">{selectedOption.emoji}</span>{selectedOption.type}</Listbox.Button>
                                 <Listbox.Options className="border bg-white rounded shadow-lg ">
                                     {options.map((option) => (
                                         <Listbox.Option
@@ -208,7 +208,7 @@ const BookInfo = (params) => {
                                             value={option}
                                             className="p-2 hover:bg-yellow-200"
                                         >
-                                            {option.type}
+                                            <span className="">{option.emoji}</span> {option.type}
                                         </Listbox.Option>
                                     ))}
                                 </Listbox.Options>
