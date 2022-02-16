@@ -11,7 +11,7 @@ const Header = () => {
 
             <div className="mx-auto">
                 <Link href="/bookclub" >
-                    <a className="text-xl border flex p-2 rounded align-baseline font-semibold font-sans">
+                    <a className="text-xl flex rounded align-baseline font-semibold font-sans">
                         <span>📖</span><span >Books</span>
                     </a>
                 </Link>
