@@ -1,6 +1,11 @@
 import Link from "next/link";
 
+
 const Login = () => {
+
+   
+
+
     return (
         <div className="w-full">
             <div className="flex items-center justify-center">
@@ -26,7 +31,7 @@ const Login = () => {
 
 
                     <button
-                        type="submit"
+                        // type="submit"
                         className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded">
                         Log in
                     </button>
