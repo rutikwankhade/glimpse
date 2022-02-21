@@ -1,17 +1,19 @@
 import '../styles/globals.css'
-import Sidebar from '../components/Sidebar'
+import store from '../app/store'
+import { Provider } from 'react-redux'
+
 import Header from '../components/Header'
 function MyApp({ Component, pageProps }) {
-  return <div >
-    <Header/>
 
+  return (
+  <Provider store={store}>
+    <Header />
     <div className="flex w-full">
-       {/* <Sidebar className=" bg-gray-50 fixed top-0"/> */}
-    <Component {...pageProps} className="w-full overflow-scroll" />
-
+      <Component {...pageProps} className="w-full overflow-scroll" />
     </div>
-   
-    </div> 
+    </Provider>
+  )
+
 }
 
 export default MyApp
