@@ -56,6 +56,19 @@ const BookInfo = (params) => {
     }
 
 
+
+    // const handleOptionChange = (option) => {
+    //     setSelectedOption(option);
+
+    //     const book = {
+    //         bookId: info.id,
+    //         cover: info.volumeInfo.imageLinks.thumbnail,
+    //         title: info.volumeInfo.title,
+    //         status: option.type
+    //     }
+    // }
+
+
     return (
         <div className="bg-gray-50 w-full items-center justify-center">
             <Transition appear show={isOpen}>
@@ -195,7 +208,7 @@ const BookInfo = (params) => {
 
                             <Listbox
                                 value={selectedOption}
-                                onChange={setSelectedOption}
+                                onChange={(option) => handleOptionChange(option)}
                                 className="flex flex-col w-60  text-left"
                                 as="div"
                             >
@@ -206,7 +219,7 @@ const BookInfo = (params) => {
                                         <Listbox.Option
                                             key={option.id}
                                             value={option}
-                                            className="p-2 hover:bg-yellow-200"
+                                            className="p-2 hover:bg-yellow-200 cursor-pointer"
                                         >
                                             <span className="">{option.emoji}</span> {option.type}
                                         </Listbox.Option>
