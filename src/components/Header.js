@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { supabase } from "../lib/supabaseClient"
-
+import avatarIcon from '../assets/images/avatar.png'
+import Image from "next/image";
+import {  useSelector } from "react-redux";
 
 const Header = () => {
+        const { user} = useSelector((state) => state.auth);
 
-     const user = supabase.auth.user();
-  const username= user?.user_metadata.name 
+
     return (
         <div className="border flex items-center w-full p-4 px-20">
             <Link href="/">
@@ -22,8 +23,16 @@ const Header = () => {
                 </Link>
 
             </div>
-           <span className="text-xl">{username&&username}
-</span> 
+
+            <div className="flex items-center mr-10">
+                <span className="text-xl">{user?.username} </span> 
+                <Image src={avatarIcon} className="h-10 mx-2 w-10 rounded-full"
+                    height="40"
+                    width="40"
+                />
+
+            </div>
+           
 
         </div>
     );
