@@ -50,7 +50,7 @@ export const loginUser = createAsyncThunk(
     console.log(body)
 
     try {
-      const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/auth/signup', body, config);
+      const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/auth/login', body, config);
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token)
