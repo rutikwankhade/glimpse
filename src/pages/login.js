@@ -1,10 +1,30 @@
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+import { registerUser} from "../app/features/authSlice";
 
 
 const Login = () => {
 
+
+    const router = useRouter()
+
+    const dispatch = useDispatch()
+
+        const { isFetching, message } = useSelector((state) => state.auth);
+
    
 
+    
+    
+    useEffect(() => {
+        if (isFetching) {
+            router.push('/bookclub');
+        }
+
+    }, [isFetching]);
 
     return (
         <div className="w-full">

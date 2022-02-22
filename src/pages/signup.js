@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { registerUser, userSelector } from "../app/features/authSlice";
+import { registerUser} from "../app/features/authSlice";
 
 
 const SignUp = () => {
@@ -16,7 +16,7 @@ const SignUp = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const { isFetching, user, message } = useSelector((state) => state.auth);
+    const { isFetching, message } = useSelector((state) => state.auth);
    
     const onSubmit = (data) => {
         console.log(data);

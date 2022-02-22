@@ -73,7 +73,7 @@ export const authSlice = createSlice({
     user: {},
     token: "",
     isFetching: false,
-    message: "hi",
+    message: "",
   },
   reducers: {
 
@@ -94,18 +94,25 @@ export const authSlice = createSlice({
 
     },
     [registerUser.rejected]: (state, { payload }) => {
-      state.errorMessage = payload.message;
+      state.message = payload.message;
     },
 
     [loginUser.pending]: (state, action) => {
-      state.status = "loading";
-    },
-    [loginUser.fulfilled]: (state, action) => {
-      state.status = "success";
-      console.log(action.payload)
-      state.user = action.payload;
+      state.isFetching = true;
 
     },
+    [loginUser.fulfilled]: (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isFetching = false;
+      state.status = "success";
+
+    },
+    [loginUser.rejected]: (state, { payload }) => {
+      state.message = payload.message;
+    },
+
 
   },
 })
