@@ -1,10 +1,12 @@
-import { createSlice, createAsyncThunk  } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
+
 
 export const registerUser = createAsyncThunk(
   "api/auth/signup",
   async ({ username, email, password }) => {
-      
+
 
     const config = {
       headers: {
@@ -36,7 +38,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "api/auth/login",
   async ({ email, password }) => {
-      
+
 
     const config = {
       headers: {
@@ -51,6 +53,8 @@ export const loginUser = createAsyncThunk(
       const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/auth/signup', body, config);
 
       if (res.data.success) {
+        localStorage.setItem("token", res.data.token)
+
         return res.data;
       }
 
@@ -66,8 +70,10 @@ export const loginUser = createAsyncThunk(
 export const authSlice = createSlice({
   name: "user",
   initialState: {
-    token: '',
-    loading:false
+    user: {},
+    token: "",
+    isFetching: false,
+    message: "hi",
   },
   reducers: {
 
@@ -76,21 +82,28 @@ export const authSlice = createSlice({
 
   extraReducers: {
     [registerUser.pending]: (state, action) => {
-      state.status = "loading";
-    },
-    [registerUser.fulfilled]: (state, action) => {
-      state.status = "success";
-      console.log(action.payload)
-      state.token = action.payload;
+      state.isFetching = true;
 
     },
+    [registerUser.fulfilled]: (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isFetching = false;
+      state.status = "success";
+
+    },
+    [registerUser.rejected]: (state, { payload }) => {
+      state.errorMessage = payload.message;
+    },
+
     [loginUser.pending]: (state, action) => {
       state.status = "loading";
     },
     [loginUser.fulfilled]: (state, action) => {
       state.status = "success";
       console.log(action.payload)
-      state.token = action.payload;
+      state.user = action.payload;
 
     },
 
@@ -98,4 +111,8 @@ export const authSlice = createSlice({
 })
 
 
-export default authSlice.reducer;
+export const userSelector = (state) => state;
+
+
+// export default authSlice.reducer;
+
