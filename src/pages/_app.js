@@ -1,24 +1,15 @@
 import '../styles/globals.css'
+import MainApp from './mainapp'
+import { Provider } from 'react-redux'
 import store from '../app/store'
-import { Provider} from 'react-redux'
-import { SessionProvider } from "next-auth/react"
 
-import Header from '../components/Header'
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-
-
+function MyApp(props) {
 
   return (
     <Provider store={store}>
-      <SessionProvider session={session}>
-      <Header />
-      <div className="flex w-full">
-        <Component {...pageProps} className="w-full overflow-scroll" />
-        </div>
-        </SessionProvider>
+      <MainApp {...props} />
     </Provider>
   )
-
 }
 
 export default MyApp

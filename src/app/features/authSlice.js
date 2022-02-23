@@ -12,11 +12,11 @@ export const loadUser = createAsyncThunk(
     }
 
     try {
-      const res = await axios.get('http://localhost:5000/api/auth');
+      const res = await axios.get('https://glimpsecommunity.herokuapp.com/api/auth/token');
       if (res.data) {
-        console.log(res.data)
         return res.data;
       }
+      
 
     } catch (err) {
             console.log("Failed to load user", err);
@@ -136,12 +136,10 @@ export const authSlice = createSlice({
       state.message = payload.message;
     },
 
-     [loadUser.pending]: (state, action) => {
-
-    },
+   
     [loadUser.fulfilled]: (state, action) => {
-      console.log(action.payload)
-      state.user = action.payload;
+      // console.log(action.payload)
+      state.user = action.payload.user;
       state.isAuthenticated = true;
 
     },
