@@ -25,8 +25,8 @@ const Header = () => {
             </div>
 
             <div className="flex items-center mr-10">
-                <span className="text-xl">{user?.username} </span> 
-                <Image src={avatarIcon} className="h-10 mx-2 w-10 rounded-full"
+                <span className="text-xl px-8 mr-4 font-semibold">{user?.username} </span> 
+                <Image src={avatarIcon} className=" px-4 rounded-full"
                     height="40"
                     width="40"
                 />
