@@ -57,16 +57,16 @@ const BookInfo = (params) => {
 
 
 
-    // const handleOptionChange = (option) => {
-    //     setSelectedOption(option);
+    const handleOptionChange = (option) => {
+        setSelectedOption(option);
 
-    //     const book = {
-    //         bookId: info.id,
-    //         cover: info.volumeInfo.imageLinks.thumbnail,
-    //         title: info.volumeInfo.title,
-    //         status: option.type
-    //     }
-    // }
+        const book = {
+            bookId: info.id,
+            cover: info.volumeInfo.imageLinks.thumbnail,
+            title: info.volumeInfo.title,
+            status: option.type
+        }
+    }
 
 
     return (
