@@ -1,7 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import setAuthToken from "../../utils/setAuthToken";
 
 
+export const loadUser = createAsyncThunk(
+  'api/auth',
+  async () => {
+
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+
+    try {
+      const res = await axios.get('http://localhost:5000/api/auth');
+      if (res.data) {
+        console.log(res.data)
+        return res.data;
+      }
+
+    } catch (err) {
+            console.log("Failed to load user", err);
+
+    }
+  }
+)
 
 export const registerUser = createAsyncThunk(
   "api/auth/signup",
@@ -71,6 +93,7 @@ export const authSlice = createSlice({
   name: "user",
   initialState: {
     user: {},
+    isAuthenticated:false,
     token: "",
     isFetching: false,
     message: "",
@@ -111,6 +134,16 @@ export const authSlice = createSlice({
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.message = payload.message;
+    },
+
+     [loadUser.pending]: (state, action) => {
+
+    },
+    [loadUser.fulfilled]: (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload;
+      state.isAuthenticated = true;
+
     },
 
 
