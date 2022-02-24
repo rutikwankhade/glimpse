@@ -1,9 +1,10 @@
 import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition, Listbox } from '@headlessui/react'
+import { useDispatch, useSelector } from "react-redux";
 
 import { getRandomColor } from '../../utils/utils'
 import { handleReviewSubmit } from '../../services/books'
-
+import { addBookToLibrary } from '../../app/features/ProfileSlice';
 
 const options = [
     { id: 1, emoji: '🔖', type: 'Want to read' },
@@ -13,14 +14,18 @@ const options = [
 
 
 const BookInfo = (params) => {
+
+
+
+    const dispatch = useDispatch()
+    const { isFetching } = useSelector((state) => state.profile);
+
     const [info, setInfo] = useState()
     const [isOpen, setIsOpen] = useState(false);
     const [postText, setPostText] = useState('')
     const [bgColor, setBgColor] = useState({ primaryColor: '#f2f2f2', secondaryColor: "#f2f2f2" })
 
-    const [selectedOption, setSelectedOption] = useState(options[0])
-
-
+    const [bookStatus, setBooksStatus] = useState(options[0])
 
 
     const getBookInfo = async (term) => {
@@ -57,8 +62,8 @@ const BookInfo = (params) => {
 
 
 
-    const handleOptionChange = (option) => {
-        setSelectedOption(option);
+    const handleBookStatus = (option) => {
+        setBooksStatus(option);
 
         const book = {
             bookId: info.id,
@@ -66,6 +71,10 @@ const BookInfo = (params) => {
             title: info.volumeInfo.title,
             status: option.type
         }
+
+        //add book to collection
+        dispatch(addBookToLibrary(book))
+
     }
 
 
@@ -207,13 +216,13 @@ const BookInfo = (params) => {
 
 
                             <Listbox
-                                value={selectedOption}
-                                onChange={(option) => handleOptionChange(option)}
+                                value={bookStatus}
+                                onChange={(option) => handleBookStatus(option)}
                                 className="flex flex-col w-60  text-left"
                                 as="div"
                             >
                                 <Listbox.Button className="border  px-4 p-2 text-xl rounded"
-                                ><span className="mx-2">{selectedOption.emoji}</span>{selectedOption.type}</Listbox.Button>
+                                ><span className="mx-2">{bookStatus.emoji}</span>{bookStatus.type}</Listbox.Button>
                                 <Listbox.Options className="border bg-white rounded shadow-lg ">
                                     {options.map((option) => (
                                         <Listbox.Option
