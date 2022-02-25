@@ -2,7 +2,23 @@ import Image from 'next/image';
 import hero1 from '../assets/images/hero-1.png'
 import Link from 'next/link';
 import Header from '../components/Header';
+import { useRouter } from 'next/router';
+
+import { useEffect } from 'react';
+import { useSelector } from "react-redux";
+
 const Home = () => {
+  const router = useRouter()
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+
+  useEffect(() => {
+
+    if (isAuthenticated) {
+      router.push('/bookclub')
+    }
+
+  }, [isAuthenticated])
 
   return (
     <div className="w-full">
@@ -18,10 +34,8 @@ const Home = () => {
         </div>
 
 
-
         <div className="w-1/2">
           <Image src={hero1} />
-
         </div>
 
 
@@ -33,11 +47,11 @@ const Home = () => {
 
 Home.getLayout = page => (
   <div>
-<Header/>
+    <Header />
 
     {page}
   </div>
-  
+
 )
 
 export default Home;

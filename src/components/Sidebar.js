@@ -4,7 +4,7 @@ const Sidebar = () => {
     return ( 
         <div className=" w-1/5 flex flex-col p-4 border rounded-xl mx-4">
             <Link href="/bookclub" >
-                <a className="  text-xl my-2 rounded-xl font-semibold bg-white">
+                <a className=" text-xl my-2 rounded-xl font-semibold bg-white">
                 Feed
 
                 </a>
