@@ -18,7 +18,6 @@ const Home = () => {
 
 
 
-
         <div className="w-1/2">
           <Image src={hero1} />
 

@@ -143,6 +143,9 @@ export const authSlice = createSlice({
       state.isAuthenticated = true;
 
     },
+      [loadUser.rejected]: (state, { payload }) => {
+      state.message = payload.message;
+    },
 
 
   },

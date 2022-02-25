@@ -71,7 +71,7 @@ const BookInfo = (params) => {
             title: info.volumeInfo.title,
             status: option.type
         }
-
+// console.log(book)
         //add book to collection
         dispatch(addBookToLibrary(book))
 

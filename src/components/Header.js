@@ -19,11 +19,14 @@ const Header = () => {
                     ?
                     <div className="flex items-center ml-auto mr-10">
                         <span className="text-xl px-8 mr-4 font-semibold">{user?.username} </span>
+                       
+                      <Link href={`/profile/${user._id}`} >
                         <Image src={avatarIcon} className=" px-4 border-white border-2 rounded-full"
                             height="40"
                             width="40"
-                        />
-
+                            />
+                           
+</Link>
                     </div>
                     :
                     <div className="flex items-center ml-auto mr-10">
