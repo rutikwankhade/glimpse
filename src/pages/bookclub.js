@@ -3,10 +3,9 @@ import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {  getAllBookReviews } from '../services/books'
+import HomeLayout from '../components/HomeLayout'
 
-
-
-export default function BookClub() {
+ function BookClub() {
 
   const [booksFeed, setBooksFeed] = useState()
 
@@ -26,8 +25,9 @@ export default function BookClub() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
 
+      <main className="">
+reviews
 
         <div className="flex">
 
@@ -82,3 +82,8 @@ export default function BookClub() {
     </div>
   )
 }
+BookClub.getLayout = page => (
+
+    <HomeLayout>{page}</HomeLayout>
+)
+export default BookClub;

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import hero1 from '../assets/images/hero-1.png'
 import Link from 'next/link';
+import Header from '../components/Header';
 const Home = () => {
 
   return (
@@ -29,5 +30,14 @@ const Home = () => {
     </div>
   );
 }
+
+Home.getLayout = page => (
+  <div>
+<Header/>
+
+    {page}
+  </div>
+  
+)
 
 export default Home;

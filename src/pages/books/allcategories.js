@@ -1,5 +1,6 @@
 import { categories } from '../../services/books'
 import Link from 'next/link';
+import HomeLayout from "../../components/HomeLayout";
 
 
 const AllCategories = () => {
@@ -32,5 +33,10 @@ const AllCategories = () => {
 
         </div>);
 }
+
+AllCategories.getLayout = page => (
+
+    <HomeLayout>{page}</HomeLayout>
+)
 
 export default AllCategories;

@@ -5,10 +5,12 @@ import Header from '../components/Header'
 import { loadUser } from '../app/features/authSlice'
 import setAuthToken from '../utils/setAuthToken'
 
-
 function MainApp({ Component, pageProps: { session, ...pageProps } }) {
 
     const dispatch = useDispatch()
+    // const Layout = Component.layout || (children => <>{children}</>)
+    const getLayout = Component.getLayout || (page => page)
+
 
 
     useEffect(() => {
@@ -21,12 +23,16 @@ function MainApp({ Component, pageProps: { session, ...pageProps } }) {
     }, [])
 
 
-    return (
-        <div>
-            <Header />
-            <div className="flex w-full">
-                <Component {...pageProps} />
-            </div>
+
+
+    return getLayout(
+        <div className="w-full">
+                            {/* <Header /> */}
+
+            <div className="w-full">
+
+                    <Component {...pageProps} />
+                </div>
         </div>
     )
 }

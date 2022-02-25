@@ -1,3 +1,5 @@
+import HomeLayout from "../components/HomeLayout";
+
 const explore = () => {
     return (
         <div className="w-full">
@@ -5,5 +7,10 @@ const explore = () => {
         </div>
       );
 }
+
+explore.getLayout = page => (
+
+    <HomeLayout>{page}</HomeLayout>
+)
  
 export default explore;
