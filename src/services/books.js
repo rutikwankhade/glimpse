@@ -23,7 +23,7 @@ export const categories = [
     },
     {
         emoji: '🌆',
-        name: 'non fiction',
+        name: 'nonfiction',
 
     },
     {

@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { categories } from '../../../services/books'
 import Link from 'next/link'
 import Image from 'next/image'
-
 import cover from '../../../assets/images/cover.jpg'
-
+import HomeLayout from '../../../components/HomeLayout'
 const Category = (params) => {
     const [response, setResponse] = useState()
     const [emoji, setEmoji] = useState()
@@ -29,15 +28,15 @@ const Category = (params) => {
         setEmoji(res.emoji)
 
 
-        getBooks(`subject:${params.params.category}&startIndex=0&maxResults=20`)
+        getBooks(`subject:${params.params.category}&startIndex=0&maxResults=24`)
 
     }, [])
 
 
     return (
-        <div className="bg-gray-50 w-full">
-            <div className="flex items-center text-5xl m-4">
-                <span className="border rounded-xl p-4 h-24 w-24 bg-white">{emoji}</span>
+        <div className=" w-full">
+            <div className="flex bg-gray-50 rounded-xl items-center  p-2 text-4xl">
+                <span className="border flex rounded-xl p-4 h-16 w-16 bg-white justify-center">{emoji}</span>
 
                 <h1 className=" font-bold ml-4 capitalize text-gray-800">{params.params.category}</h1>
             </div>
@@ -81,4 +80,8 @@ export async function getStaticProps({ params }) {
         props: { params }// will be passed to the page component as props
     }
 }
+
+Category.getLayout = page => (
+    <HomeLayout>{page}</HomeLayout>
+)
 export default Category;
