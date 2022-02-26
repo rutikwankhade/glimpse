@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRandomColor } from '../../utils/utils'
 import { handleReviewSubmit } from '../../services/books'
 import { addBookToLibrary } from '../../app/features/ProfileSlice';
+import HomeLayout from "../../components/HomeLayout";
 
 const options = [
     { id: 1, emoji: '🔖', type: 'Want to read' },
@@ -185,7 +186,7 @@ const BookInfo = (params) => {
 
 
             {info ?
-                <div className="border m-4 p-10 w-8/12 h-80 bg-white rounded-xl mx-auto flex flex-row ">
+                <div className="border  p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
                     <div className="-skew-y-6 border flex-initial p-2 rounded-md h-max shadow-xl  border-l-8   ">
                         <img src={info && info.volumeInfo.imageLinks.thumbnail} className="w-max h-max" />
                     </div>
@@ -264,5 +265,9 @@ export async function getStaticProps({ params }) {
         props: { params }// will be passed to the page component as props
     }
 }
+
+BookInfo.getLayout = page => (
+    <HomeLayout>{page}</HomeLayout>
+)
 
 export default BookInfo;
