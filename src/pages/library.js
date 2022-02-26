@@ -4,7 +4,7 @@ import HomeLayout from "../components/HomeLayout";
 
 
 const library = () => {
-    const { user } = useSelector((state) => state.auth);
+    const {user } = useSelector((state) => state.auth);
 
     return (
         <div>

@@ -2,15 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 import { categories } from '../services/books'
 import searchIcon from '../assets/icons/bx-search.svg'
 import cover from '../assets/images/cover.jpg'
+import { useRouter } from 'next/router';
 
 
 const Searchbar = () => {
+    const router = useRouter();
+
 
 
     const [term, setTerm] = useState('')
@@ -33,6 +36,12 @@ const Searchbar = () => {
         const timeout = setTimeout(() => getBooks(term), 500)
         setTimeoutId(timeout)
     }
+
+    useEffect(() => {
+
+        setIsOpen(false)
+
+    }, [router.query])
 
 
     return (
