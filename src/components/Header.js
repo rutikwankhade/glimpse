@@ -1,9 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useSelector } from "react-redux";
-
-import SearchBar from './Searchbar'
 import avatarIcon from '../assets/images/avatar.png'
+import Image from "next/image";
+import SearchBar from './Searchbar'
 
 const Header = () => {
     const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -42,9 +41,6 @@ const Header = () => {
                     }
 
                 </div>
-
-
-
 
             </div>
 
