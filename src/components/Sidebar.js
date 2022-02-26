@@ -19,7 +19,7 @@ const Sidebar = () => {
                 </a>
             </Link> 
 
-                <Link href="/explore" >
+                <Link href="/library" >
                 
                 <a className="text-xl rounded-xl my-2 font-semibold  bg-white">
                 My Library
