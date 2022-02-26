@@ -8,7 +8,7 @@ const library = () => {
 
     return (
         <div>
-            <BooksCollection collection={user.booksCollection} />
+            <BooksCollection collection={user && user.booksCollection} />
         </div>
     );
 }
