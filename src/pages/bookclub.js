@@ -2,20 +2,24 @@ import Head from 'next/head'
 import { useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import {  getAllBookReviews } from '../services/books'
 import HomeLayout from '../components/HomeLayout'
+import { useSelector, useDispatch } from "react-redux";
+import { getExploreFeed } from '../app/features/feedSlice'
 
- function BookClub() {
 
-  const [booksFeed, setBooksFeed] = useState()
+function BookClub() {
+  const dispatch = useDispatch()
 
+  const { isFetching, exploreFeed } = useSelector((state) => state.feed);
 
   useEffect(() => {
-    let res = getAllBookReviews()
-    res.then(data => {
-      setBooksFeed(data)
-    })
+    dispatch(getExploreFeed())
+
   }, [])
+
+  // dispatch(getExploreFeed())
+
+
 
 
   return (
@@ -27,19 +31,22 @@ import HomeLayout from '../components/HomeLayout'
 
 
       <main className="">
-reviews
+
 
         <div className="flex">
 
 
-          <div className="w-8/12 mx-auto">
+          <div className="w-7/12 ">
 
-            {booksFeed && booksFeed.map(post => {
+            {exploreFeed && exploreFeed.map(post => {
               return (
-                <div className=" w-2/3  m-4  border rounded">
-                  <div className="flex p-2 items-center">
-                    <img src={post.avatar} className="rounded-full h-8 w-8" />
-                    <span className="text-md font-medium text-gray-600 mx-2">{post.username}</span>
+                <div className="  m-4  border rounded ">
+                  <div className="flex p-2 items-center bg-white">
+                    <Link href={`/profile/${post.postedBy._id}`}>
+
+                      <img src={post.postedBy.avatar} className="rounded-full h-8 w-8 cursor-pointer" />
+                    </Link>
+                    <span className="text-md font-medium text-gray-600 mx-2">{post.postedBy.username}</span>
                   </div>
 
                   <div className=" rounded h-96 flex flex-col"
@@ -53,15 +60,17 @@ reviews
                           {post.review}
                         </p>
                       </div>
-                      <img
-                        src={post.cover}
-                        className="w-max h-max border m-4 shadow-xl"
-                      />
+                      <Link href={`/books/${post.bookId}`}>
+                        <img
+                          src={post.cover}
+                          className="w-max h-max border m-4 shadow-xl transform hover:scale-105 cursor-pointer"
+                        />
+                      </Link>
                     </div>
 
                     <div className="flex items-center mx-8">
                       <h1 className="text-2xl text-gray-700 w-1/2 font-bold">{post.title}&rarr;</h1>
-                      <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{post.category}</span>)</span>
+                      <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{post.category}</span></span>
                     </div>
                   </div>
                 </div>
@@ -84,6 +93,6 @@ reviews
 }
 BookClub.getLayout = page => (
 
-    <HomeLayout>{page}</HomeLayout>
+  <HomeLayout>{page}</HomeLayout>
 )
 export default BookClub;

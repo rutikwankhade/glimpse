@@ -3,9 +3,9 @@ import { Dialog, Transition, Listbox } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
 
 import { getRandomColor } from '../../utils/utils'
-import { handleReviewSubmit } from '../../services/books'
 import { addBookToLibrary } from '../../app/features/ProfileSlice';
 import HomeLayout from "../../components/HomeLayout";
+import { postBookReview } from '../../app/features/feedSlice';
 
 const options = [
     { id: 1, emoji: '🔖', type: 'Want to read' },
@@ -47,7 +47,9 @@ const BookInfo = (params) => {
 
     const handlePostSubmit = () => {
 
-        const bookInfo = {
+        const review = {
+            primaryColor: bgColor.primaryColor,
+            secondaryColor: bgColor.secondaryColor,
             theme: bgColor,
             review: postText,
             bookId: info.id,
@@ -56,8 +58,9 @@ const BookInfo = (params) => {
             title: info.volumeInfo.title
         }
 
-        handleReviewSubmit(bookInfo)
-        // console.log(data)
+        dispatch(postBookReview(review))
+
+
         setIsOpen(false)
     }
 
@@ -72,7 +75,7 @@ const BookInfo = (params) => {
             title: info.volumeInfo.title,
             status: option.type
         }
-// console.log(book)
+        // console.log(book)
         //add book to collection
         dispatch(addBookToLibrary(book))
 
