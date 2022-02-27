@@ -23,8 +23,6 @@ const Header = () => {
                 <SearchBar />
             </div>
 
-
-
             <div className="">
 
                 {isAuthenticated
