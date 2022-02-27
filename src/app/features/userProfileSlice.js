@@ -62,7 +62,7 @@ export const addBookToLibrary = createAsyncThunk(
 
 
 
-export const profileSlice = createSlice({
+export const userProfileSlice = createSlice({
   name: "profile",
   initialState: {
     profile: {},

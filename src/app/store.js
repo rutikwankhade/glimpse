@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { authSlice } from '../app/features/authSlice'
-import { profileSlice } from './features/profileSlice'
 import { feedSlice } from './features/feedSlice'
-
+import { userProfileSlice } from './features/userProfileSlice'
 const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
-    profile:profileSlice.reducer,
+    profile:userProfileSlice.reducer,
     feed:feedSlice.reducer
        
   },

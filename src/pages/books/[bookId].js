@@ -3,7 +3,7 @@ import { Dialog, Transition, Listbox } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
 
 import { getRandomColor } from '../../utils/utils'
-import { addBookToLibrary } from '../../app/features/ProfileSlice';
+import { addBookToLibrary } from '../../app/features/userProfileSlice';
 import HomeLayout from "../../components/HomeLayout";
 import { postBookReview } from '../../app/features/feedSlice';
 

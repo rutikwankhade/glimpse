@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 // import Image from "next/image";
-import { getUserProfile } from "../../app/features/profileSlice";
+import { getUserProfile } from "../../app/features/userProfileSlice";
 import Link from "next/link";
 import HomeLayout from "../../components/HomeLayout";
 import BooksCollection from "../../components/BooksCollection";
