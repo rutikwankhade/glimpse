@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import Header from '../components/Header'
 import { loadUser } from '../app/features/authSlice'
 import setAuthToken from '../utils/setAuthToken'
 
-function MainApp({ Component, pageProps: { session, ...pageProps } }) {
+function MainApp({ Component, pageProps: { ...pageProps } }) {
 
     const dispatch = useDispatch()
     // const Layout = Component.layout || (children => <>{children}</>)
@@ -23,14 +22,9 @@ function MainApp({ Component, pageProps: { session, ...pageProps } }) {
     }, [])
 
 
-
-
     return getLayout(
         <div className="w-full">
-                            {/* <Header /> */}
-
             <div className="w-full">
-
                     <Component {...pageProps} />
                 </div>
         </div>
