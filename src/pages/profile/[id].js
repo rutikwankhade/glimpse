@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import Image from "next/image";
 import { getUserProfile } from "../../app/features/userProfileSlice";
-import Link from "next/link";
 import HomeLayout from "../../components/HomeLayout";
 import BooksCollection from "../../components/BooksCollection";
 const Profile = ({ params }) => {
@@ -24,16 +22,16 @@ const Profile = ({ params }) => {
 
             <div className="w-full border p-6">
                 <div className="flex flex-col justify-center">
-<img src={profile.avatar}  className="rounded-full mx-auto h-20 w-20"/>
-<span  className="rounded-full mx-auto text-2xl font-semibold">{profile.username}</span>
+                    <img src={profile.avatar} className="rounded-full mx-auto h-20 w-20" />
+                    <span className="rounded-full mx-auto text-2xl font-semibold">{profile.username}</span>
 
                 </div>
 
 
-               
+
 
             </div>
-        
+
             <BooksCollection collection={profile && profile.booksCollection} />
 
 

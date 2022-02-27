@@ -1,4 +1,3 @@
-import { supabase } from "../lib/supabaseClient"
 
 export const categories = [
     {
@@ -79,61 +78,5 @@ export const categories = [
 ]
 
 
-export const handleReviewSubmit = async (bookInfo) => {
-
-    console.log('the data before submit', bookInfo)
-    // const reviewData = JSON.stringify(data)
-    const user = supabase.auth.user();
-    console.log(user.user_metadata)
 
 
-    try {
-        const user = supabase.auth.user();
-        console.log(user)
-        let { error,data } = await supabase.from('bookreviews').insert({
-            username: user.user_metadata.name,
-            avatar: user.user_metadata.avatar_url,
-            userId: user.id,
-            primaryColor: bookInfo.theme.primaryColor,
-            secondaryColor: bookInfo.theme.SecondaryColor,
-            review: bookInfo.review,
-            bookId: bookInfo.bookId,
-            category: bookInfo.category,
-            cover: bookInfo.cover,
-            title: bookInfo.title
-
-        });
-
-        console.log(data)
-        if (error) {
-            throw error;
-        }
-
-
-    } catch (error) {
-        console.log(error)
-
-    }
-
-}
-
-
-export const getAllBookReviews= async ()=>{
-    try {
-        let { data, error, status } = await supabase
-            .from('bookreviews')
-            .select()
-          
-
-           
-        if (error && status !== 406) {
-            throw error;
-        }
-
-        if (data) {
-            return data
-        }
-    } catch (error) {
-        console.log(error.message);
-    }
-}

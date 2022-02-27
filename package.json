@@ -9,7 +9,6 @@
     "@headlessui/react": "^1.4.3",
     "@next-auth/mongodb-adapter": "^1.0.1",
     "@reduxjs/toolkit": "^1.7.2",
-    "@supabase/supabase-js": "^1.30.2",
     "axios": "^0.26.0",
     "mongodb": "^4.4.0",
     "next": "latest",
