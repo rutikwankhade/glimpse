@@ -29,7 +29,7 @@ const Home = () => {
           <h1 className="  text-6xl font-serif m-10 font-bold leading-2">Discover good books from the readers just like you</h1>
 
           <Link href="/signup">
-            <button className="bg-white text-2xl font-bold p-2 rounded-full px-6 mx-8">Let's get started</button>
+            <button className="bg-gray-800 text-white text-2xl font-bold p-2 rounded-full px-6 mx-8">Let's get started</button>
           </Link>
         </div>
 

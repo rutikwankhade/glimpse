@@ -102,7 +102,7 @@ const Searchbar = () => {
                                         {response && response.map(book => {
                                             return (
                                                 <Link href={`/books/${book.id}`} key={book.id} >
-                                                    <div 
+                                                    <div
                                                         className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/4 items-center h-auto shadow-sm rounded-xl ">
 
                                                         {book.volumeInfo.imageLinks ?

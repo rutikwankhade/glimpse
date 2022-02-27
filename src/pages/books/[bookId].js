@@ -6,6 +6,9 @@ import { getRandomColor } from '../../utils/utils'
 import { addBookToLibrary } from '../../app/features/userProfileSlice';
 import HomeLayout from "../../components/HomeLayout";
 import { postBookReview } from '../../app/features/feedSlice';
+import cover from '../../assets/images/cover.jpg'
+
+import Image from 'next/image';
 
 const options = [
     { id: 1, emoji: '🔖', type: 'Want to read' },
@@ -42,7 +45,7 @@ const BookInfo = (params) => {
     useEffect(() => {
         getBookInfo(params.params.bookId);
 
-    }, [])
+    }, [params.params.bookId])
 
 
     const handlePostSubmit = () => {
@@ -143,10 +146,16 @@ const BookInfo = (params) => {
                                                 />
 
                                             </div>
-                                            <img
+                                            {/* <img
                                                 src={info && info.volumeInfo.imageLinks.thumbnail}
                                                 className="w-max h-max border m-4  shadow-xl "
-                                            />
+                                            /> */}
+                                            {info && info.volumeInfo.imageLinks ?
+                                                <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                                                :
+                                                <img src={cover} />
+
+                                            }
                                         </div>
 
 
@@ -191,7 +200,15 @@ const BookInfo = (params) => {
             {info ?
                 <div className="border  p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
                     <div className="-skew-y-6 border flex-initial p-2 rounded-md h-max shadow-xl  border-l-8   ">
-                        <img src={info && info.volumeInfo.imageLinks.thumbnail} className="w-max h-max" />
+
+                        {/* <img src={info && info.volumeInfo?.imageLinks.thumbnail} className="w-max h-max" /> */}
+                        {info.volumeInfo.imageLinks ?
+                            <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                            :
+                            <Image src={cover} />
+
+                        }
+
                     </div>
 
                     <div className="w-max  m-6">
@@ -199,9 +216,9 @@ const BookInfo = (params) => {
                         <p className="text-xl text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
 
                         <div className="flex ">
-                            <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2">{author}</span>)}</span>
+                            <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2" key={author}>{author}</span>)}</span>
                             <span className="mx-4"><span className="font-semibold" >{info && info.volumeInfo.pageCount}</span> pages</span>
-                            <span>{info && info.volumeInfo.categories.map(category => <span className="font-semibold bg-yellow-100 rounded px-4 mx-2">{category}</span>)}</span>
+                            <span>{info && info.volumeInfo.categories.map(category => <span className="font-semibold bg-yellow-100 rounded px-4 mx-2" key={category}>{category}</span>)}</span>
 
                         </div>
 

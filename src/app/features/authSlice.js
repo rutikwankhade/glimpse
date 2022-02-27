@@ -16,10 +16,10 @@ export const loadUser = createAsyncThunk(
       if (res.data) {
         return res.data;
       }
-      
+
 
     } catch (err) {
-            console.log("Failed to load user", err);
+      console.log("Failed to load user", err);
 
     }
   }
@@ -93,12 +93,19 @@ export const authSlice = createSlice({
   name: "user",
   initialState: {
     user: {},
-    isAuthenticated:false,
+    userId: "",
+    isAuthenticated: false,
     token: "",
     isFetching: false,
     message: "",
   },
   reducers: {
+    logout: (state, action) => {
+      localStorage.removeItem('token');
+      state.user = {};
+      state.isAuthenticated = false;
+      state.token = "";
+    },
 
   },
 
@@ -114,6 +121,10 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
       state.isFetching = false;
       state.status = "success";
+      state.isAuthenticated = true;
+      state.userId = action.payload.user.userId;
+
+
 
     },
     [registerUser.rejected]: (state, { payload }) => {
@@ -130,26 +141,37 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
       state.isFetching = false;
       state.status = "success";
+      state.isAuthenticated = true;
+      state.userId = action.payload.user.userId;
+
+
 
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.message = payload.message;
     },
 
-   
+
     [loadUser.fulfilled]: (state, action) => {
       // console.log(action.payload)
-      state.user = action.payload.user;
-      state.isAuthenticated = true;
+      if (action.payload?.user) {
+        state.user = action.payload.user;
+        state.userId = action.payload.user._id;
+
+        state.isAuthenticated = true;
+      }
+
 
     },
-      [loadUser.rejected]: (state, { payload }) => {
+    [loadUser.rejected]: (state, { payload }) => {
       state.message = payload.message;
     },
 
 
   },
 })
+
+export const { logout } = authSlice.actions;
 
 
 export const userSelector = (state) => state;

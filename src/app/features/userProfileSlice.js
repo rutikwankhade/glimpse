@@ -93,6 +93,7 @@ export const userProfileSlice = createSlice({
     },
     [getUserProfile.fulfilled]: (state, action) => {
       console.log(action.payload)
+      
       state.profile = action.payload.user;
       state.isFetching = false;
       state.status = "success";
