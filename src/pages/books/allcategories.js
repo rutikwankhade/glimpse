@@ -15,7 +15,7 @@ const AllCategories = () => {
                 {
                     categories.sort((a, b) => a.name.localeCompare(b.name)).map(category => {
                         return (
-                            <Link href={`/books/category/${category.name}`} >
+                            <Link href={`/books/category/${category.name}`} key={category.name}>
                                 <div className="flex items-center justify-start px-6 p-2 hover:bg-gray-50 cursor-pointer border m-2 rounded-xl">
                                     <span className="text-4xl m-2">
                                         {category.emoji}

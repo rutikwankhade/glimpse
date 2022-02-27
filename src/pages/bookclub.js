@@ -14,6 +14,7 @@ function BookClub() {
 
   useEffect(() => {
     dispatch(getExploreFeed())
+    
 
   }, [])
 
@@ -40,7 +41,7 @@ function BookClub() {
 
             {exploreFeed && exploreFeed.map(post => {
               return (
-                <div className="  m-4  border rounded ">
+                <div className="  m-4  border rounded " key={post._id}>
                   <div className="flex p-2 items-center bg-white">
                     <Link href={`/profile/${post.postedBy._id}`}>
 

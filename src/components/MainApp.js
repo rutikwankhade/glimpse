@@ -10,8 +10,6 @@ function MainApp({ Component, pageProps: { ...pageProps } }) {
     // const Layout = Component.layout || (children => <>{children}</>)
     const getLayout = Component.getLayout || (page => page)
 
-
-
     useEffect(() => {
 
         if (localStorage.token) {

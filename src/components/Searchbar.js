@@ -101,8 +101,8 @@ const Searchbar = () => {
                                     <div className="flex flex-row flex-wrap justify-center ">
                                         {response && response.map(book => {
                                             return (
-                                                <Link href={`/books/${book.id}`} >
-                                                    <div key={book.accessInfo.id}
+                                                <Link href={`/books/${book.id}`} key={book.id} >
+                                                    <div 
                                                         className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/4 items-center h-auto shadow-sm rounded-xl ">
 
                                                         {book.volumeInfo.imageLinks ?
@@ -120,7 +120,7 @@ const Searchbar = () => {
                                         {
                                             categories.slice(0, 8).map(category => {
                                                 return (
-                                                    <Link href={`/books/category/${category.name}`} >
+                                                    <Link href={`/books/category/${category.name}`} key={category.name}>
 
 
                                                         <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">

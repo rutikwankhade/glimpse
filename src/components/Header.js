@@ -24,13 +24,13 @@ const Header = () => {
                         <div className="flex items-center ">
                             <span className="text-xl px-8 mr-4 font-semibold">{user?.username} </span>
 
-                            <Link href={`/profile/${user._id}`} >
+                            {/* <Link href={`/profile/${user._id}`} > */}
                                 <Image src={avatarIcon} className="h-10 w-10 px-4 border-white border-2 rounded-full"
                                     height="80"
                                     width="80"
                                 />
 
-                            </Link>
+                            {/* </Link> */}
                         </div>
                         :
                         <div className="w-max ">
