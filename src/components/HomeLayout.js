@@ -1,18 +1,16 @@
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
-const HomeLayout = ({children} ) =>{
-    return ( 
-        <div className="w-full flex-row">
-            <Header/>
+const HomeLayout = ({ children }) => {
+    return (
+        <div>
+            <Header />
             <div className="flex">
-                                                <Sidebar/>
-
+                <Sidebar />
                 {children}
-
-            </div> 
+            </div>
 
         </div>
-     );
+    );
 }
 
 export default HomeLayout;

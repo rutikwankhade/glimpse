@@ -120,10 +120,10 @@ const Searchbar = () => {
                                         {
                                             categories.slice(0, 8).map(category => {
                                                 return (
-                                                    <Link href={`/books/category/${category.name}`} key={category.name}>
+                                                    <Link href={`/books/category/${category.name}`} key={category.name} >
 
 
-                                                        <div className="flex flex-col items-center px-10 py-6 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">
+                                                        <div className="flex flex-col items-center p-4 w-40 shadow-sm hover:bg-gray-50 cursor-pointer border m-4 rounded-xl">
                                                             <span className="text-5xl m-2">
                                                                 {category.emoji}
                                                             </span>
