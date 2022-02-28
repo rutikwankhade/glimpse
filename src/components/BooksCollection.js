@@ -1,5 +1,6 @@
 import { Tab } from '@headlessui/react'
 import Link from 'next/link';
+import BookCard from './BookCard';
 
 const BooksCollection = ({ collection, posts }) => {
     return (
@@ -7,6 +8,8 @@ const BooksCollection = ({ collection, posts }) => {
             <Tab.Group>
 
                 <Tab.List className="w-full justify-center  bg-gray-50 p-2 border rounded-b-xl flex flex-row items-center ">
+                                        <Tab className="rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">Stats</Tab>
+
                     <Tab className="rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">📖 Currently Reading</Tab>
                     <Tab className=" rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">🔖 Want to Read</Tab>
                     <Tab className="rounded-xl  shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">✅ Read</Tab>
@@ -15,21 +18,21 @@ const BooksCollection = ({ collection, posts }) => {
                 </Tab.List>
 
                 <Tab.Panels>
+
+                  <Tab.Panel>
+                        <div className="flex flex-wrap">
+                            <div>
+                               <span> {collection.filter(book => book.status === "Want to Read").length}</span>
+                            </div>
+                        </div>
+                    </Tab.Panel>
+
+
                     <Tab.Panel>
                         <div className="flex flex-wrap">
-
                             {
                                 collection?.filter(book => book.status === "Currently reading").map(book => {
-                                    return (
-                                        <div key={book.bookId} className="w-1/4 ">
-                                            <Link href={`/books/${book.bookId}`} >
-                                                <div
-                                                    className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 px-6 items-center h-auto shadow-sm rounded-xl ">
-                                                    <img src={book.cover} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
-                                                    <h1 className="text-xl text-center text-gray-700 font-semibold mt-4  h-auto overflow-hidden">{book.title}</h1>
-                                                </div>
-                                            </Link>
-                                        </div>)
+                                    return <BookCard book={book} />  
                                 })
                             }
                         </div>
@@ -38,19 +41,9 @@ const BooksCollection = ({ collection, posts }) => {
 
                     <Tab.Panel>
                         <div className="flex flex-wrap">
-
                             {
                                 collection?.filter(book => book.status === "Want to Read").map(book => {
-                                    return (
-                                        <div key={book.bookId} className="w-1/4">
-                                            <Link href={`/books/${book.bookId}`} >
-                                                <div
-                                                    className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 px-6 items-center h-auto shadow-sm rounded-xl ">
-                                                    <img src={book.cover} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
-                                                    <h1 className="text-xl text-center text-gray-700 font-semibold mt-4 overflow-hidden">{book.title}</h1>
-                                                </div>
-                                            </Link>
-                                        </div>)
+                                    return <BookCard book={book} />  
                                 })
                             }
                         </div>
@@ -59,28 +52,13 @@ const BooksCollection = ({ collection, posts }) => {
 
                     <Tab.Panel>
                         <div className="flex flex-wrap">
-
                             {
                                 collection?.filter(book => book.status === "Read").map(book => {
-                                    return (
-                                        <div key={book.bookId} className="w-1/4">
-                                            <Link href={`/books/${book.bookId}`} >
-                                                <div
-                                                    className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 px-6 items-center h-auto shadow-sm rounded-xl ">
-                                                    <img src={book.cover} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
-                                                    <h1 className="text-xl text-center text-gray-700 font-semibold mt-4 overflow-hidden">{book.title}</h1>
-                                                </div>
-                                            </Link>
-                                        </div>)
+                                    return <BookCard book={book} />   
                                 })
                             }
                         </div>
                     </Tab.Panel>
-
-
-
-
-
 
 
                     <Tab.Panel>
