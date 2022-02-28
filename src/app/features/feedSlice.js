@@ -90,12 +90,36 @@ export const getReviewsByBookId = createAsyncThunk(
 
 
 
+export const getLatestUsers = createAsyncThunk(
+  "api/user",
+  async () => {
+
+    try {
+      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/user/`);
+
+      if (res.data) {
+        console.log(res)
+        return res.data;
+      }
+
+    } catch (err) {
+
+      console.log("couldn't get latest users", err);
+    }
+  }
+);
+
+
+
+
+
 export const feedSlice = createSlice({
   name: "feed",
   initialState: {
     userfeed: [],
     exploreFeed: [],
     bookReviews: [],
+    latestUsers: [],
     isFetching: false,
     message: "",
   },
@@ -126,6 +150,14 @@ export const feedSlice = createSlice({
       //   console.log(action.payload.data)
       state.bookReviews = action.payload.reviews;
       state.isFetching = false;
+      // state.status = "success";
+
+    },
+
+   
+    [getLatestUsers.fulfilled]: (state, action) => {
+      //   console.log(action.payload.data)
+      state.latestUsers = action.payload.users;
       // state.status = "success";
 
     },
