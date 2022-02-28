@@ -1,18 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getUserProfile, followReader, unfollowReader } from "../../app/features/userProfileSlice";
+import { getUserProfile, followReader, unfollowReader,getPostsByUserId } from "../../app/features/userProfileSlice";
 import HomeLayout from "../../components/HomeLayout";
 import BooksCollection from "../../components/BooksCollection";
 
 const Profile = ({ params }) => {
     const dispatch = useDispatch()
-    const { profile, userFollowStatus } = useSelector((state) => state.profile);
+    const { profile, userFollowStatus,userPosts } = useSelector((state) => state.profile);
     const { userId } = useSelector((state) => state.auth);
 
     const [isUserFollowed, setIsUserFollowed] = useState(false)
 
     useEffect(() => {
         dispatch(getUserProfile(params))
+        dispatch(getPostsByUserId(params.id))
 
     }, [])
 
@@ -114,7 +115,10 @@ const Profile = ({ params }) => {
 
             </div>
 
-            <BooksCollection collection={profile && profile.booksCollection} />
+            <BooksCollection
+                collection={profile && profile.booksCollection}
+                posts={userPosts}
+            />
 
 
         </div>

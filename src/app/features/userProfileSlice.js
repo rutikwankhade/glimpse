@@ -97,6 +97,26 @@ export const unfollowReader = createAsyncThunk(
 
 
 
+export const getPostsByUserId = createAsyncThunk(
+  "api/post/user/userId",
+  async (userId) => {
+    console.log(userId)
+
+    try {
+      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/user/${userId}`);
+
+      if (res.data) {
+        // console.log(res)
+        return res.data;
+      }
+
+    } catch (err) {
+
+      console.log("Couldn't get user posts", err);
+    }
+  }
+);
+
 
 
 
@@ -104,9 +124,11 @@ export const userProfileSlice = createSlice({
   name: "profile",
   initialState: {
     profile: {},
+    userPosts:[],
     isFetching: false,
     message: "",
     userFollowStatus: "idle",
+    userPostsStatus:'idle'
 
   },
   reducers: {
@@ -168,6 +190,17 @@ export const userProfileSlice = createSlice({
     },
     [unfollowReader.rejected]: (state, action) => {
       state.userFollowStatus = "error";
+    },
+
+
+    [getPostsByUserId.pending]: (state, action) => {
+      state.userPostsStatus = "loading";
+    },
+    [getPostsByUserId.fulfilled]: (state, action) => {
+      console.log(action.payload)
+
+      state.userPostsStatus = "success";
+      state.userPosts = action.payload.reviews;
     },
 
 
