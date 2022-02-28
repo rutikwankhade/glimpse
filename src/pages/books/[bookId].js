@@ -23,7 +23,7 @@ const BookInfo = (params) => {
 
 
     const dispatch = useDispatch()
-    // const {  } = useSelector((state) => state.profile);
+    const {  isAuthenticated} = useSelector((state) => state.auth);
     const { isFetching, bookReviews } = useSelector((state) => state.feed);
 
     const [info, setInfo] = useState()
@@ -46,15 +46,21 @@ const BookInfo = (params) => {
 
     useEffect(() => {
         getBookInfo(params.params.bookId);
-
-
-
     }, [params.params.bookId])
 
     useEffect(() => {
         dispatch(getReviewsByBookId(params.params.bookId))
-
     }, [])
+
+
+
+    useEffect(() => {
+
+        if (!isAuthenticated) {
+            router.push('/')
+        }
+
+    }, [isAuthenticated])
 
 
     const handlePostSubmit = () => {

@@ -1,18 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import HomeLayout from "../components/HomeLayout";
-import { useState } from 'react'
+import { useState, useEfect } from 'react'
 import { updateUserData } from "../app/features/authSlice";
 
 const Settings = () => {
     const dispatch = useDispatch()
 
-    const { user, userId, updating } = useSelector((state) => state.auth);
+    const { user, isAuthenticated, userId, updating } = useSelector((state) => state.auth);
 
     const [image, setImage] = useState()
     const [avatarUrl, setAvatarUrl] = useState('')
     const [isUploading, setIsUploading] = useState(false)
 
+    useEffect(() => {
+        if (!isAuthenticated) {
+            router.push('/')
+        }
+    }, [isAuthenticated])
 
+    
 
     const handleUploadImage = async (e) => {
         setImage(e.target.files[0])

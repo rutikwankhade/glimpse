@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import HomeLayout from "../components/HomeLayout";
 import { useEffect } from "react";
 import { getPostsByUserId } from "../app/features/userProfileSlice";
-const library = () => {
-    const { user, userId } = useSelector((state) => state.auth);
-    const { userPosts } = useSelector((state) => state.profile);
+import { useRouter } from "next/router";
 
+const library = () => {
+    const { user, userId, isAuthenticated } = useSelector((state) => state.auth);
+    const { userPosts } = useSelector((state) => state.profile);
+    const router = useRouter()
 
     const dispatch = useDispatch()
 
@@ -15,6 +17,15 @@ const library = () => {
         dispatch(getPostsByUserId(userId))
 
     }, [])
+
+
+    useEffect(() => {
+
+        if (!isAuthenticated) {
+            router.push('/')
+        }
+
+    }, [isAuthenticated])
 
 
 

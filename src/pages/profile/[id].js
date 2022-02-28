@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getUserProfile, followReader, unfollowReader,getPostsByUserId } from "../../app/features/userProfileSlice";
+import { getUserProfile, followReader, unfollowReader, getPostsByUserId } from "../../app/features/userProfileSlice";
 import HomeLayout from "../../components/HomeLayout";
 import BooksCollection from "../../components/BooksCollection";
 
 const Profile = ({ params }) => {
     const dispatch = useDispatch()
-    const { profile, userFollowStatus,userPosts } = useSelector((state) => state.profile);
-    const { userId } = useSelector((state) => state.auth);
+    const { profile, userFollowStatus, userPosts } = useSelector((state) => state.profile);
+    const { userId, isAuthenticated } = useSelector((state) => state.auth);
 
     const [isUserFollowed, setIsUserFollowed] = useState(false)
 
@@ -67,59 +67,44 @@ const Profile = ({ params }) => {
                         <div className="flex text-md font-medium">
                             <span className="mx-2">{profile && profile.following?.length} following</span>
                             <span className="mx-2">{profile && profile.followers?.length} followers</span>
-
                         </div>
 
                     </div>
+
+
                     <div className="ml-auto mr-10">
 
-                        {userId !== params.id ?
-                            <div>
+                            {(userId !== params.id && isAuthenticated) ?
+                                <div>
+                                    {
+                                        isUserFollowed ?
+                                            <button
+                                                onClick={() => handleUnfollowUser()}
+                                                className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
+                                                {userFollowStatus === 'loading' ? <span>...</span> : <span>Unfollow</span>}
+                                            </button>
+                                            :
+                                            <button
+                                                onClick={() => handleFollowUser()}
+                                                className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
+                                                {userFollowStatus === 'loading' ? <span>...</span> : <span>Follow</span>}
+                                            </button>
 
+                                    }
+                                </div>
+                                :
+                                <div></div>
 
-                                {
-                                    isUserFollowed ?
-                                        <button
-                                            onClick={() => handleUnfollowUser()}
-                                            className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                            {userFollowStatus === 'loading' ? <span>...</span> : <span>Unfollow</span>}
-                                        </button>
-                                        :
-                                        <button
-                                            onClick={() => handleFollowUser()}
-                                            className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                            {userFollowStatus === 'loading' ? <span>...</span> : <span>Follow</span>}
-                                        </button>
-
-                                }
-                            </div>
-
-                            :
-                            <div></div>
-
-
-
-                        }
-
-
+                            }
                     </div>
 
-
                 </div>
-
-
-
-
-
-
-
             </div>
 
             <BooksCollection
                 collection={profile && profile.booksCollection}
                 posts={userPosts}
             />
-
 
         </div>
     );
