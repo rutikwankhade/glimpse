@@ -25,13 +25,13 @@ export const getExploreFeed = createAsyncThunk(
 
 export const postBookReview = createAsyncThunk(
   "api/post/addpot",
-  async ({  title,
-        bookId,
-        primaryColor,
-        secondaryColor,
-        review,
-        category,
-        cover, }) => {
+  async ({ title,
+    bookId,
+    primaryColor,
+    secondaryColor,
+    review,
+    category,
+    cover, }) => {
 
     const config = {
       headers: {
@@ -39,19 +39,21 @@ export const postBookReview = createAsyncThunk(
       }
     }
 
-    const body = JSON.stringify({  title,
-        bookId,
-        primaryColor,
-        secondaryColor,
-        review,
-        category,
-        cover, })
+    const body = JSON.stringify({
+      title,
+      bookId,
+      primaryColor,
+      secondaryColor,
+      review,
+      category,
+      cover,
+    })
     // console.log(body)
 
     try {
       const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/post/addpost', body, config);
 
-        if (res.data) {
+      if (res.data) {
         return res.data;
       }
 
@@ -65,29 +67,50 @@ export const postBookReview = createAsyncThunk(
 
 
 
+export const getReviewsByBookId = createAsyncThunk(
+  "api/post/:bookId",
+  async (bookId) => {
+
+
+    try {
+      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/${bookId}`);
+
+      if (res.data) {
+        console.log(res)
+        return res.data;
+      }
+
+
+    } catch (err) {
+
+      console.log("couldn't get book reviews", err);
+    }
+  }
+);
 
 
 
 export const feedSlice = createSlice({
-    name: "feed",
-    initialState: {
-        userfeed: [],
-        exploreFeed: [],
-        isFetching: false,
-        message: "",
-    },
-    reducers: {
+  name: "feed",
+  initialState: {
+    userfeed: [],
+    exploreFeed: [],
+    bookReviews: [],
+    isFetching: false,
+    message: "",
+  },
+  reducers: {
 
-    },
+  },
 
 
-    extraReducers: {
-        [getExploreFeed.pending]: (state, action) => {
+  extraReducers: {
+    [getExploreFeed.pending]: (state, action) => {
       state.isFetching = true;
 
     },
     [getExploreFeed.fulfilled]: (state, action) => {
-    //   console.log(action.payload.data)
+      //   console.log(action.payload.data)
       state.exploreFeed = action.payload.posts;
       state.isFetching = false;
       // state.status = "success";
@@ -95,7 +118,21 @@ export const feedSlice = createSlice({
     },
 
 
+    [getReviewsByBookId.pending]: (state, action) => {
+      state.isFetching = true;
+
     },
+    [getReviewsByBookId.fulfilled]: (state, action) => {
+      //   console.log(action.payload.data)
+      state.bookReviews = action.payload.reviews;
+      state.isFetching = false;
+      // state.status = "success";
+
+    },
+
+
+
+  },
 })
 
 
