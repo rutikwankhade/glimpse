@@ -161,7 +161,7 @@ const BookInfo = (params) => {
 
                                         <div className="flex items-center mx-8">
                                             <h1 className="text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}&rarr;</h1>
-                                            <span className="ml-auto">{info && info.volumeInfo.categories.map(category => <span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{category}</span>)}</span>
+                                            <span className="ml-auto">{info && info.volumeInfo.categories.map(category => <span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6" key={category}>{category}</span>)}</span>
 
                                         </div>
 
@@ -218,7 +218,7 @@ const BookInfo = (params) => {
                         <div className="flex ">
                             <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2" key={author}>{author}</span>)}</span>
                             <span className="mx-4"><span className="font-semibold" >{info && info.volumeInfo.pageCount}</span> pages</span>
-                            <span>{info && info.volumeInfo.categories.map(category => <span className="font-semibold bg-yellow-100 rounded px-4 mx-2" key={category}>{category}</span>)}</span>
+                            <span>{info && info.volumeInfo.categories?.map(category => <span className="font-semibold bg-yellow-100 rounded px-4 mx-2" key={category}>{category}</span>)}</span>
 
                         </div>
 

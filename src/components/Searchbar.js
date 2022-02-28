@@ -33,7 +33,7 @@ const Searchbar = () => {
     const handleInputChange = (query) => {
         clearTimeout(timeoutId)
         setTerm(query);
-        const timeout = setTimeout(() => getBooks(term), 500)
+        const timeout = setTimeout(() => getBooks(term), 700)
         setTimeoutId(timeout)
     }
 
