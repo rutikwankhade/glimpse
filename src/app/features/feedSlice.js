@@ -23,6 +23,29 @@ export const getExploreFeed = createAsyncThunk(
   }
 );
 
+
+export const getUserFeed = createAsyncThunk(
+  "api/post/feed/userfeed",
+  async () => {
+
+    try {
+      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/feed/userfeed`);
+
+      if (res.data) {
+        console.log(res.data)
+        return res.data;
+      }
+
+
+    } catch (err) {
+
+      console.log("Couldn't get user feed", err);
+    }
+  }
+);
+
+
+
 export const postBookReview = createAsyncThunk(
   "api/post/addpot",
   async ({ title,
@@ -116,7 +139,7 @@ export const getLatestUsers = createAsyncThunk(
 export const feedSlice = createSlice({
   name: "feed",
   initialState: {
-    userfeed: [],
+    userFeed: [],
     exploreFeed: [],
     bookReviews: [],
     latestUsers: [],
@@ -136,6 +159,18 @@ export const feedSlice = createSlice({
     [getExploreFeed.fulfilled]: (state, action) => {
       //   console.log(action.payload.data)
       state.exploreFeed = action.payload.posts;
+      state.isFetching = false;
+      // state.status = "success";
+
+    },
+
+    [getUserFeed.pending]: (state, action) => {
+      state.isFetching = true;
+
+    },
+    [getUserFeed.fulfilled]: (state, action) => {
+      //   console.log(action.payload.data)
+      state.userFeed = action.payload.posts;
       state.isFetching = false;
       // state.status = "success";
 
