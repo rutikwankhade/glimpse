@@ -1,13 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import HomeLayout from "../components/HomeLayout";
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { updateUserData } from "../app/features/authSlice";
 
 const Settings = () => {
+    const dispatch = useDispatch()
 
-    const { user } = useSelector((state) => state.auth);
+    const { user, userId, updating } = useSelector((state) => state.auth);
 
     const [image, setImage] = useState()
-    const [imageUrl, setImageUrl] = useState('')
+    const [avatarUrl, setAvatarUrl] = useState('')
     const [isUploading, setIsUploading] = useState(false)
 
 
@@ -29,7 +31,7 @@ const Settings = () => {
             if (res) {
                 setIsUploading(false);
                 console.log(res)
-                setImageUrl(res.url);
+                setAvatarUrl(res.url);
             }
         } catch (error) {
             setIsUploading(false);
@@ -58,7 +60,10 @@ const Settings = () => {
 
                     <span>{isUploading ? "uploading..." : ""}</span>
                     <button
-                        className={`${image?'':'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 rounded-xl`}>Save</button>
+                        onClick={() => dispatch(updateUserData({ userId: userId, avatarUrl: avatarUrl }))}
+                        className={`${image ? '' : 'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 rounded-xl`}>
+                        {updating ? 'updating...' : 'Update'}
+                    </button>
                 </div>
             </div>
 

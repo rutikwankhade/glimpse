@@ -89,6 +89,36 @@ export const loginUser = createAsyncThunk(
 );
 
 
+export const updateUserData = createAsyncThunk(
+  "api/user/update/profile",
+  async ({ userId, avatarUrl }) => {
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const body = JSON.stringify({ avatarUrl })
+
+    // console.log(userId)
+    try {
+      const res = await axios.post(`https://glimpsecommunity.herokuapp.com/api/user/update/profile/${userId}`, body, config);
+      if (res.data.success) {
+        console.log(res.data)
+        return res.data;
+      }
+
+    } catch (err) {
+      console.log("Error, can't update user details", err);
+    }
+  }
+);
+
+
+
+
+
 export const authSlice = createSlice({
   name: "user",
   initialState: {
@@ -98,6 +128,7 @@ export const authSlice = createSlice({
     token: "",
     isFetching: false,
     message: "",
+    updating: false
   },
   reducers: {
     logout: (state, action) => {
@@ -167,6 +198,19 @@ export const authSlice = createSlice({
       state.message = payload.message;
     },
 
+
+    [updateUserData.pending]: (state, action) => {
+      state.updating = true;
+    },
+
+    [updateUserData.fulfilled]: (state, action) => {
+      console.log(action.payload.user)
+
+      state.user = action.payload.user;
+      state.updating = false;
+
+
+    }
 
   },
 })
