@@ -24,9 +24,9 @@ function BookClub() {
 
 
   return (
-    <div className="bg-gray-50 w-full ">
+    <div className="bg-gray-50 w-full pb-10">
       <Head>
-        <title>Create Next App</title>
+        <title>bookclub</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -64,7 +64,7 @@ function BookClub() {
                       <Link href={`/books/${post.bookId}`}>
                         <img
                           src={post.cover}
-                          className="w-max h-max border m-4 shadow-xl transform hover:scale-105 cursor-pointer"
+                          className="w-max h-max border m-4 shadow-xl hover:shadow-2xl cursor-pointer"
                         />
                       </Link>
                     </div>

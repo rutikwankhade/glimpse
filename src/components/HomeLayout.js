@@ -4,9 +4,14 @@ const HomeLayout = ({ children }) => {
     return (
         <div>
             <Header />
-            <div className="flex">
-                <Sidebar />
+            <div className="flex w-full justify-center">
+              
+                <Sidebar  />
+
+              
+              
                 {children}
+
             </div>
 
         </div>

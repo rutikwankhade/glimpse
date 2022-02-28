@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 const BooksCollection = ({ collection }) => {
     return (
-        <div className="w-full ">
+        <div className="w-full">
             <Tab.Group>
 
-                <Tab.List className=" justify-center  bg-gray-50 p-2 border rounded flex flex-row items-center ">
+                <Tab.List className="w-full justify-center  bg-gray-50 p-2 border rounded-xl flex flex-row items-center ">
                     <Tab className="rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">📖 Currently Reading</Tab>
                     <Tab className=" rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">🔖 Want to Read</Tab>
                     <Tab className="rounded-xl  shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">✅ Read</Tab>

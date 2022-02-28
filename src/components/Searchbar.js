@@ -52,7 +52,7 @@ const Searchbar = () => {
                 <Dialog
                     as="div"
                     onClose={setIsOpen}
-                    className="fixed inset-0 z-10 "
+                    className="fixed inset-0 z-20 "
                 >
                     <div className=" px-4 text-center">
                         <Transition.Child

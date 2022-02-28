@@ -8,7 +8,7 @@ import bookIcon from '../assets/icons/book.svg'
 
 const Sidebar = () => {
     return (
-        <div className=" w-1/5 flex flex-col text-xl font-semibold p-4 border rounded-xl mx-4">
+        <div className="h-96 sticky top-20 w-80 flex flex-col text-xl font-semibold p-4 border rounded-xl mx-4">
 
 
             <Link href="/bookclub">

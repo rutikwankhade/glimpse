@@ -102,7 +102,7 @@ const BookInfo = (params) => {
                     as="div"
                     onClose={setIsOpen}
                     // className={isOpen ? ' fixed inset-0 z-10 overflow-y-auto' : ''}
-                    className="fixed inset-0 z-10 overflow-y-auto"
+                    className="fixed inset-0 z-20 overflow-y-auto"
                 >
                     <div className="min-h-screen px-4 text-center">
 
@@ -208,11 +208,11 @@ const BookInfo = (params) => {
 
             {info ?
                 <div className="border  p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
-                    <div className="-skew-y-6 border flex-initial p-2 rounded-md h-max shadow-xl  border-l-8   ">
+                    <div className="-skew-y-6 border-2 flex-initial p-2 rounded-md h-max border-gray-600  border-l-8 shadow-xl  ">
 
                         {/* <img src={info && info.volumeInfo?.imageLinks.thumbnail} className="w-max h-max" /> */}
                         {info.volumeInfo.imageLinks ?
-                            <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-28  shadow-xl shadow-slate-200 border" />
+                            <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-28" />
                             :
                             <Image src={cover} />
 
@@ -239,9 +239,7 @@ const BookInfo = (params) => {
                                 ✨ Share a glimpse
                             </button>
 
-                            {/* <button className="text-3xl p-1  border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>🔖</span></button>
-                            <button className="p-1 text-3xl border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span >📖</span></button>
-                            <button className="text-3xl p-1 border border-gray-300 mx-2 shadow-sm rounded justify-center items-center"><span>✅</span></button> */}
+                           
 
 
 

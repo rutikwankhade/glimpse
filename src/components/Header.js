@@ -20,7 +20,7 @@ const Header = () => {
     }
 
     return (
-        <div className="flex items-center p-4 h-max w-10/12 mx-auto">
+        <div className="sticky z-20 top-0 bg-white flex items-center p-4 h-max px-20">
 
 
             <Link href="/">
