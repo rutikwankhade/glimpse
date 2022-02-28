@@ -14,7 +14,7 @@ export const getUserProfile = createAsyncThunk(
       const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/user/${id}`);
 
       if (res.data) {
-        console.log(res)
+        // console.log(res)
         return res.data;
       }
 
@@ -62,12 +62,52 @@ export const addBookToLibrary = createAsyncThunk(
 
 
 
+//followUser
+export const followReader = createAsyncThunk(
+  "/api/user/follow",
+  async (followReaderID) => {
+    try {
+      const response = await axios.patch(`https://glimpsecommunity.herokuapp.com/api/user/follow/${followReaderID}`);
+      if (response.data.success) {
+        return response.data;
+      }
+      return {};
+    } catch (error) {
+      console.log("Error, failed to follow user", error);
+    }
+  }
+);
+
+
+//unfollow
+export const unfollowReader = createAsyncThunk(
+  "/api/user/unfollow/v1/",
+  async (unfollowReaderID) => {
+    try {
+      const response = await axios.patch(`https://glimpsecommunity.herokuapp.com/api/user/unfollow/v1/${unfollowReaderID}`);
+      if (response.data.success) {
+        return response.data;
+      }
+      return {};
+    } catch (error) {
+      console.log("Error, failed to unfollow user", error);
+    }
+  }
+);
+
+
+
+
+
+
 export const userProfileSlice = createSlice({
   name: "profile",
   initialState: {
     profile: {},
     isFetching: false,
     message: "",
+    userFollowStatus: "idle",
+
   },
   reducers: {
 
@@ -92,12 +132,42 @@ export const userProfileSlice = createSlice({
 
     },
     [getUserProfile.fulfilled]: (state, action) => {
-      console.log(action.payload)
-      
+      // console.log(action.payload)
+
       state.profile = action.payload.user;
       state.isFetching = false;
       state.status = "success";
 
+    },
+
+
+    [followReader.pending]: (state, action) => {
+      state.userFollowStatus = "loading";
+    },
+    [followReader.fulfilled]: (state, action) => {
+      console.log(action.payload)
+      state.userFollowStatus = "success";
+
+      if (action.payload.user) {
+              state.profile = action.payload.user;
+
+      }
+    },
+    [followReader.rejected]: (state, action) => {
+      state.userFollowStatus = "error";
+    },
+
+    [unfollowReader.pending]: (state, action) => {
+      state.userFollowStatus = "loading";
+    },
+    [unfollowReader.fulfilled]: (state, action) => {
+      console.log(action.payload)
+
+      state.userFollowStatus = "success";
+      state.profile = action.payload.user;
+    },
+    [unfollowReader.rejected]: (state, action) => {
+      state.userFollowStatus = "error";
     },
 
 
