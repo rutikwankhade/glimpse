@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import HomeLayout from "../components/HomeLayout";
-import { useState, useEfect } from 'react'
+import { useState, useEffect } from 'react'
 import { updateUserData } from "../app/features/authSlice";
 
 const Settings = () => {
