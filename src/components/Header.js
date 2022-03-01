@@ -8,6 +8,7 @@ import userIcon from '../assets/icons/user.svg'
 import logoutIcon from '../assets/icons/logout.svg'
 import { logout } from "../app/features/authSlice";
 import { useRouter } from "next/router";
+import booksIcon from '../assets/images/book3.png'
 
 const Header = () => {
     const { user, userId, isAuthenticated } = useSelector((state) => state.auth);
@@ -22,9 +23,11 @@ const Header = () => {
     return (
         <div className="sticky z-20 top-0 bg-white flex items-center p-4 h-max px-20">
 
-
             <Link href="/">
-                <a className="text-xl font-bold font-serif italic">Glimpse</a>
+                <div className="flex">
+                    <Image src={booksIcon} width="30" height="40" className="mx-2" />
+                    <a className="text-xl ml-2 font-bold font-serif italic">Glimpse</a>
+                </div>
             </Link>
 
 
@@ -36,7 +39,7 @@ const Header = () => {
                     <div className="flex flex-row items-center w-full">
                         <SearchBar />
 
-                        <span className="text-xl mx-2 mb-2 font-semibold">{ user.username}</span>
+                        <span className="text-xl mx-2 mb-2 font-semibold">{user.username}</span>
 
 
                         <Popover className="relative inline-block">
@@ -79,9 +82,9 @@ const Header = () => {
                     </div>
 
                     :
-                    <div className=" w-40 ml-auto mr-4">
+                    <div className=" w-40 ml-auto mr-4 transform hover:translate-x-2 duration-300">
                         <Link href="/login" >
-                            <a className="bg-white border-2 border-gray-800 px-6 text-xl font-bold p-1 hover:bg-gray-50 rounded-full ">Log In</a>
+                            <a className=" bg-white border-2 border-gray-800 px-6 text-xl font-bold p-1  rounded-full ">Log In</a>
                         </Link>
                     </div>
                 }

@@ -7,6 +7,10 @@ module.exports = {
 
   theme: {
     extend: {},
+     fontFamily: {
+      
+      'body': 'Arimo'
+    },
   },
   plugins: [],
 }

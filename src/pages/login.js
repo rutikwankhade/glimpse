@@ -32,12 +32,12 @@ const Login = () => {
     }, [isFetching]);
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-yellow-50">
             <div className="flex items-center justify-center">
 
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className=" bg-white  p-10  flex flex-col border m-20  rounded-md">
-                    <h1 className="text-2xl font-semibold mb-6">Log in</h1>
+                    className=" bg-white shadow-xl w-3/12  p-12  flex flex-col border m-20  rounded-xl">
+                    <h1 className="text-2xl font-semibold mb-6 text-center">Log in</h1>
 
 
                     <input
@@ -66,7 +66,7 @@ const Login = () => {
 
                     <button
                         type="submit"
-                        className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded">
+                        className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded-full">
                         {isFetching ? 'Signing in' : 'Log in'}
 
                     </button>

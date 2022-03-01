@@ -35,12 +35,12 @@ const SignUp = () => {
 
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-yellow-50">
             <div className="flex items-center justify-center">
 
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className=" bg-white md:w-1/3 p-10  flex flex-col border m-20  rounded-md">
-                    <h1 className="text-2xl font-semibold mb-6">Create an account</h1>
+                    className=" bg-white md:w-1/3 p-12 flex flex-col border m-20  rounded-xl shadow-xl">
+                    <h1 className="text-2xl font-semibold mb-6 text-center">Create an account</h1>
 
 
                     <input
@@ -86,8 +86,8 @@ const SignUp = () => {
 
                     <button
                         type="submit"
-                        className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded">
-                        {isFetching ? 'Signing up' : 'Sign up'}
+                        className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded-full ">
+                        {isFetching ? 'Signing up' : 'Sign up '} &rarr;
 
                     </button>
 
