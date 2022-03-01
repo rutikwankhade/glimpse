@@ -176,7 +176,7 @@ const BookInfo = (params) => {
 
                                         <div className="flex items-center mx-8">
                                             <h1 className="text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}&rarr;</h1>
-                                            <span className="ml-auto">{info && info.volumeInfo.categories.map(category => <span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6" key={category}>{category}</span>)}</span>
+                                            <span className="ml-auto">{info && info.volumeInfo.categories?.map(category => <span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6" key={category}>{category}</span>)}</span>
 
                                         </div>
 

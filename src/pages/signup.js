@@ -45,7 +45,7 @@ const SignUp = () => {
 
                     <input
                         type="text"
-                        placeholder="name"
+                        placeholder="username"
                         className="text-lg m-2 bg-gray-100 py-2 px-4 w-full rounded"
                         {...register("username", { required: true })}
                     />
