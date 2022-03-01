@@ -137,7 +137,7 @@ function BookClub() {
 
 
 
-        <div className="bg-white p-8 border rounded-xl top-24 w-4/12 mx-6 sticky h-max">
+        <div className="bg-white p-8 border rounded top-24 w-4/12 m-6 sticky h-max">
 
           <div>
             <h2 className="text-xl font-semibold pb-4">⚡ Discover new readers</h2>

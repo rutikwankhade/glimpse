@@ -21,17 +21,17 @@ const BooksCollection = ({ collection, posts }) => {
 
                     <Tab.Panel >
                         <div className="flex mx-auto justify-center w-10/12 p-4">
-                            <div className="border bg-purple-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
-                                <span className="text-5xl font-semibold m-2"> {collection?.filter(book => book.status === "Want to Read").length}</span>
+                            <div className=" bg-purple-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
+                                <span className="text-5xl font-semibold m-2"> {collection?.filter(book => book.status === "Want to read").length}</span>
                                 <span className="text-xl text-gray-600">Want to Read</span>
                             </div>
 
-                            <div className="border bg-green-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
+                            <div className=" bg-green-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
                                 <span className="text-5xl font-semibold m-2"> {collection?.filter(book => book.status === "Read").length}</span>
                                 <span className="text-xl text-gray-600">Completed</span>
                             </div>
 
-                            <div className="border bg-yellow-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
+                            <div className=" bg-yellow-100 rounded-xl shadow w-1/4 p-4 m-4 flex flex-col text-center">
                                 <span className="text-5xl font-semibold m-2"> {posts && posts.length}</span>
                                 <span className="text-xl text-gray-600">Glimpse shared</span>
                             </div>
@@ -42,10 +42,10 @@ const BooksCollection = ({ collection, posts }) => {
                     <Tab.Panel>
                                  <div className="">
                             {
-                                (collection && collection?.filter(book => book.status === "Currently Reading").length) ?
+                                (collection && collection?.filter(book => book.status === "Currently reading").length) ?
                                     <div className="flex flex-wrap">
                                         {
-                                            collection?.filter(book => book.status === "Read").map(book => {
+                                            collection?.filter(book => book.status === "Currently reading").map(book => {
                                                 return <BookCard book={book} />
                                             })
                                         }
@@ -66,10 +66,10 @@ const BooksCollection = ({ collection, posts }) => {
                     <Tab.Panel>
                         <div className="">
                             {
-                                (collection && collection?.filter(book => book.status === "Want to Read").length) ?
+                                (collection && collection?.filter(book => book.status === "Want to read").length) ?
                                     <div className="flex flex-wrap">
                                         {
-                                            collection?.filter(book => book.status === "Read").map(book => {
+                                            collection?.filter(book => book.status === "Want to read").map(book => {
                                                 return <BookCard book={book} />
                                             })
                                         }
