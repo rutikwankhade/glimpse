@@ -16,7 +16,7 @@ const SignUp = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const { isFetching, message } = useSelector((state) => state.auth);
+    const { isFetching, isAuthenticated, message,user } = useSelector((state) => state.auth);
    
     const onSubmit = (data) => {
         console.log(data);
@@ -27,11 +27,11 @@ const SignUp = () => {
 
 
     useEffect(() => {
-        if (isFetching) {
+        if (isAuthenticated) {
             router.push('/bookclub');
         }
 
-    }, [isFetching]);
+    }, [isAuthenticated,user]);
 
 
     return (

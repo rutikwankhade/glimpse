@@ -226,7 +226,7 @@ const BookInfo = (params) => {
 
                     </div>
 
-                    <div className="w-max  m-6">
+                    <div className="w-8/12  m-6">
                         <h1 className="text-4xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
                         <p className="text-xl text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
 

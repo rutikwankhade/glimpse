@@ -13,7 +13,7 @@ const Login = () => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-    const { isFetching, message } = useSelector((state) => state.auth);
+    const { isFetching, message , isAuthenticated,user} = useSelector((state) => state.auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
 
@@ -25,11 +25,11 @@ const Login = () => {
 
 
     useEffect(() => {
-        if (isFetching) {
+        if (isAuthenticated) {
             router.push('/bookclub');
         }
 
-    }, [isFetching]);
+    }, [isAuthenticated,user]);
 
     return (
         <div className="w-full bg-yellow-50">
