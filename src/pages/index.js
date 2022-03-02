@@ -29,6 +29,53 @@ const Home = () => {
   return (
     <div className="w-full  py-4 bg-fuchsia-100">
 
+      <div className="mt-12 mb-20 flex  flex-col  items-center md:w-10/12 p-2 mx-auto">
+        <div className="md:w-10/12 py-4 text-center">
+          <h1 className=" text-5xl text-gray-800 m-10 font-semibold leading-1">
+            Create your own online library and manage your books with ease.
+          </h1>
+          <h3 className="text-2xl px-6">Add books to your collection as currently reading, want to read, and read.</h3>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <Image src={libraryImg} className="rounded-xl" />
+        </div>
+      </div>
+
+
+
+
+
+
+      <div className="my-10 flex md:flex-row flex-col items-center p-2 md:w-10/12  mx-auto">
+
+
+        <div className="md:w-1/2 ">
+          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
+            Share glimpse of the books you read. <span className="italic">Share your thoughts</span> and favorite quotes with glimpse.
+          </h1>
+        </div>
+        <div className="md:w-1/2 shadow-xl rounded-xl bg-white">
+          <Image src={glimpseShotImg} className="rounded-xl" />
+        </div>
+      </div>
+
+
+
+      <div className="my-10 flex md:flex-row flex-col-reverse  items-center p-2 md:w-10/12  mx-auto">
+
+
+        <div className="md:w-1/2 rounded-xl bg-white shadow-xl">
+          <Image src={tagsImg} className="rounded-xl" />
+        </div>
+        <div className="md:w-1/2">
+          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
+            Find books from <span className="italic">different genres</span> like fiction, nonfiction, business, technology, and more.
+          </h1>
+        </div>
+      </div>
+
+
       <div className="m-10 md:w-10/12 flex md:flex-row flex-col  md:py-12  mx-auto rounded-xl">
 
         <div className="md:w-6/12 ">
@@ -50,47 +97,6 @@ const Home = () => {
 
       </div>
 
-
-      <div className="my-10 flex md:flex-row flex-col items-center p-2 md:w-10/12  mx-auto">
-        <div className="md:w-1/2 shadow-xl rounded-xl bg-white">
-          <Image src={glimpseShotImg} className="rounded-xl" />
-        </div>
-
-        <div className="md:w-1/2 ">
-          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
-            Share glimpse of the books you read. <span className="italic">Share your thoughts</span> and favorite quotes with glimpse.
-          </h1>
-        </div>
-      </div>
-
-
-
-      <div className="my-10 flex md:flex-row flex-col-reverse  items-center p-2 md:w-10/12  mx-auto">
-        <div className="md:w-1/2">
-          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
-            Find books from <span className="italic">different genres</span> like fiction, nonfiction, business, technology, and more.
-          </h1>
-        </div>
-
-        <div className="md:w-1/2 rounded-xl bg-white shadow-xl">
-          <Image src={tagsImg} className="rounded-xl" />
-        </div>
-      </div>
-
-
-
-      <div className="my-24 flex  flex-col  items-center md:w-10/12 p-2 mx-auto">
-        <div className="md:w-10/12 py-4 text-center">
-          <h1 className=" text-5xl text-gray-800 m-10 font-semibold leading-1">
-            Create your own online library and manage your books with ease.
-          </h1>
-          <h3 className="text-2xl px-6">Add books to your collection as currently reading, want to read, and read.</h3>
-        </div>
-
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <Image src={libraryImg} className="rounded-xl" />
-        </div>
-      </div>
 
       <div className="flex flex-col items-center justify-center">
         <div className="rounded-xl w-20" >
