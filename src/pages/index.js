@@ -62,11 +62,6 @@ const Home = () => {
 
       </div>
 
-      {/* <div className="w-8/12 mx-auto">
-                        <Image src={hero2}  className=" rounded-xl shadow-2xl mx-auto"/>
-
-        
-</div> */}
 
 
     </div>

@@ -35,11 +35,11 @@ const SignUp = () => {
 
 
     return (
-        <div className="w-full bg-yellow-50">
+        <div className="w-full bg-fuchsia-50 h-screen">
             <div className="flex items-center justify-center">
 
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className=" bg-white md:w-1/3 p-12 flex flex-col border m-20  rounded-xl shadow-xl">
+                    className=" bg-white md:w-1/3 p-12 flex flex-col  md:m-20 m-4  rounded-xl shadow-xl">
                     <h1 className="text-2xl font-semibold mb-6 text-center">Create an account</h1>
 
 
@@ -87,14 +87,14 @@ const SignUp = () => {
                     <button
                         type="submit"
                         className="text-lg  w-full m-2 bg-gray-700  font-semibold text-white px-6 py-2 rounded-full ">
-                        {isFetching ? 'Signing up' : 'Sign up '} &rarr;
+                       <span className="transform  hover:translate-x-4 duration-300">{isFetching ? 'Signing up' : 'Sign up '} &rarr;</span> 
 
                     </button>
 
                     <div className="flex justify-center">
                         <span>Already a user?</span>
                         <Link href="/login" >
-                            <a className="underline focus:outline-none text-center text-indigo-400 font-semibold mx-2">Login</a>
+                            <a className="underline focus:outline-none text-center text-violet-500 font-semibold mx-2">Login</a>
                         </Link>
 
                     </div>

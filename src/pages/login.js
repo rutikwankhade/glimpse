@@ -32,13 +32,12 @@ const Login = () => {
     }, [isAuthenticated,user]);
 
     return (
-        <div className="w-full bg-yellow-50">
+        <div className="w-full bg-fuchsia-50 h-screen">
             <div className="flex items-center justify-center">
 
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className=" bg-white shadow-xl w-3/12  p-12  flex flex-col border m-20  rounded-xl">
+                    className=" bg-white shadow-xl md:w-4/12  p-12  flex flex-col  m-4 md:m-20  rounded-xl">
                     <h1 className="text-2xl font-semibold mb-6 text-center">Log in</h1>
-
 
                     <input
 
@@ -74,7 +73,7 @@ const Login = () => {
                     <div className="flex justify-center">
                         <span>Don't have an account?</span>
                         <Link href="/signup" >
-                            <a className="underline focus:outline-none text-center text-indigo-400 font-semibold mx-2">Signup</a>
+                            <a className="underline focus:outline-none text-center text-violet-400 font-semibold mx-2">Signup</a>
                         </Link>
 
                     </div>
