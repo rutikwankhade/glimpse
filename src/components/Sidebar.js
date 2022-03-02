@@ -8,11 +8,11 @@ import bookIcon from '../assets/icons/book.svg'
 
 const Sidebar = () => {
     return (
-        <div className="h-96 sticky top-20 w-80 flex flex-col text-xl font-semibold p-4 border rounded-xl mx-4">
+        <div className="h-full sticky md:top-24 bottom-0 md:z-0 z-10 bg-white md:w-80 flex justify-center flex-row md:flex-col md:text-xl text-md font-semibold p-4  rounded-xl mx-4">
 
 
             <Link href="/bookclub">
-                <a className="flex hover:bg-gray-50 items-center p-2 ">
+                <a className="flex hover:bg-gray-50 items-center p-2 rounded">
                     <div className="p-2 border w-10 h-10 rounded">
 
                         <Image src={feedIcon} />
@@ -32,7 +32,7 @@ const Sidebar = () => {
             </Link>
 
             <Link href="/library">
-                <a className="flex hover:bg-gray-50 items-center p-2 ">
+                <a className="flex hover:bg-gray-50 items-center p-2 rounded">
                     <div className="p-2 border w-10 h-10 rounded">
                         <Image src={bookIcon} />
 

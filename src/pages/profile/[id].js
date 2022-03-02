@@ -53,9 +53,9 @@ const Profile = ({ params }) => {
     return (
         <div className="w-full">
 
-            <div className="w-full border rounded-t-xl p-6">
+            <div className="w-full border  p-6">
 
-                <div className="flex items-center mx-auto px-20">
+                <div className="flex items-center mx-auto md:px-20">
                     <div className="flex flex-col justify-center">
                         <img src={profile.avatar} className="mx-2 rounded-full  h-20 w-20" />
 

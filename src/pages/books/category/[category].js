@@ -47,7 +47,7 @@ const Category = (params) => {
                     return (
                         <Link href={`/books/${book.id}`} >
                             <div key={book.accessInfo.id}
-                                className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 w-1/5 items-center h-auto shadow-sm rounded-xl ">
+                                className="cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 md:w-1/5 w-5/12 items-center h-auto shadow-sm rounded-xl ">
 
                                 {book.volumeInfo.imageLinks ?
                                     <img src={book.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />

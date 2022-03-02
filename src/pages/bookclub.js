@@ -41,10 +41,10 @@ function BookClub() {
       </Head>
 
 
-      <main className="flex flex-row">
+      <main className="flex md:flex-row flex-col">
 
 
-        <div className="flex flex-col w-7/12">
+        <div className="flex flex-col md:w-7/12">
 
 
 
@@ -137,7 +137,7 @@ function BookClub() {
 
 
 
-        <div className="bg-white p-8 border rounded top-24 w-4/12 m-6 sticky h-max">
+        <div className="bg-white p-8 border rounded top-24 md:w-4/12 m-6 sticky h-max">
 
           <div>
             <h2 className="text-xl font-semibold pb-4">⚡ Discover new readers</h2>

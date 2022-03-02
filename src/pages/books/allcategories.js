@@ -5,9 +5,9 @@ import HomeLayout from "../../components/HomeLayout";
 
 const AllCategories = () => {
     return (
-        <div className="w-full">
+        <div className="w-full bg-gray-50 p-2">
 
-            <div className="bg-gray-50 rounded-xl p-4">
+            <div className="bg-white rounded-xl p-4 mx-4">
                 <h1 className=" text-3xl font-bold ml-4 capitalize text-gray-800">Find books by category</h1>
             </div>
             <div className="flex flex-row w-10/12 py-2 flex-wrap mx-10">
@@ -16,7 +16,7 @@ const AllCategories = () => {
                     categories.sort((a, b) => a.name.localeCompare(b.name)).map(category => {
                         return (
                             <Link href={`/books/category/${category.name}`} key={category.name}>
-                                <div className="flex items-center justify-start px-6 p-2 hover:bg-gray-50 cursor-pointer border m-2 rounded-xl">
+                                <div className="flex bg-white transform hover:scale-105 duration-300 items-center justify-start px-6 p-2 hover:bg-gray-50 cursor-pointer border m-2 rounded-xl">
                                     <span className="text-4xl m-2">
                                         {category.emoji}
                                     </span>
