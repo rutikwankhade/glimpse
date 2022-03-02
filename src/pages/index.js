@@ -11,7 +11,7 @@ import scribble1 from '../assets/images/scribble1.png'
 import libraryImg from '../assets/images/library.png'
 import glimpseShotImg from '../assets/images/glimpse-shot.png'
 import tagsImg from '../assets/images/tags.png'
-
+import Head from 'next/head';
 
 const Home = () => {
   const router = useRouter()
@@ -28,6 +28,27 @@ const Home = () => {
 
   return (
     <div className="w-full  py-4 bg-fuchsia-100">
+
+      <Head>
+        <title>Glimpse</title>
+        <link rel="icon" href="/favicon.png" />
+        <meta
+          property="og:url"
+          content="https://glimpseapp.netlify.app"
+        />
+        <meta content="Discover, track and talk about the books you are reading" name="description" />
+
+        <meta property="og:site_name" content="Glimpse" />
+        <meta property="og:title" content="Glimpse" />
+        <meta property="og:image" content="https://user-images.githubusercontent.com/47467468/156428564-6426ee45-085a-4db6-9d5c-fe7ed2243046.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Glimpse" />
+        <meta name="twitter:image" content="https://user-images.githubusercontent.com/47467468/156428564-6426ee45-085a-4db6-9d5c-fe7ed2243046.png" />
+      </Head>
+
+
+
+
 
       <div className="mt-12 mb-20 flex  flex-col  items-center md:w-10/12 p-2 mx-auto">
         <div className="md:w-10/12 py-4 text-center">
