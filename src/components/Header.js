@@ -48,18 +48,18 @@ const Header = () => {
                             <Popover.Panel className="absolute z-10 text-md font-semibold text-gray-600 right-0 bg-white p-4 border w-44 shadow-lg rounded-xl">
                                 <div className="flex flex-col">
 
-                                    <Link href={`/profile/${userId}`}>
+                                    {/* <Link href={`/profile/${userId}`}>
                                         <a className="flex hover:bg-gray-50 items-center p-2">
                                             <Image src={userIcon} />
                                             <span className="mx-2">My Profile</span>
                                         </a>
-                                    </Link>
+                                    </Link> */}
 
 
                                     <Link href="/settings">
                                         <a className="flex hover:bg-gray-50 items-center p-2 ">
                                             <Image src={settingsIcon} />
-                                            <span className="mx-2">Setings</span>
+                                            <span className="mx-2">Edit Profile</span>
                                         </a>
                                     </Link>
 
