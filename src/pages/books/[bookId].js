@@ -101,7 +101,7 @@ const BookInfo = (params) => {
 
 
     return (
-        <div className="bg-gray-50 w-full items-center justify-center">
+        <div className="bg-gray-50 p-4 w-full items-center justify-center">
             <Transition appear show={isOpen}>
 
                 <Dialog
@@ -213,7 +213,7 @@ const BookInfo = (params) => {
 
 
             {info ?
-                <div className="border  p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
+                <div className="border   p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
                     <div className="-skew-y-6 border-2 flex-initial p-2 rounded-md h-max border-gray-600  border-l-8 shadow-xl  ">
 
                         {/* <img src={info && info.volumeInfo?.imageLinks.thumbnail} className="w-max h-max" /> */}

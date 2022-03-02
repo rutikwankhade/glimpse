@@ -8,7 +8,6 @@ import userIcon from '../assets/icons/user.svg'
 import logoutIcon from '../assets/icons/logout.svg'
 import { logout } from "../app/features/authSlice";
 import { useRouter } from "next/router";
-import booksIcon from '../assets/images/book3.png'
 
 const Header = () => {
     const { user, userId, isAuthenticated } = useSelector((state) => state.auth);
