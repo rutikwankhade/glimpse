@@ -23,7 +23,7 @@ const Header = () => {
         <div className="sticky z-20 top-0 border-b bg-white flex items-center p-4 h-max md:px-20">
 
             <Link href="/">
-                    <a className="text-xl ml-2 font-semibold cursor-pointer flex text-gray-800 w-40">📖 Glimpse</a>
+                <a className="text-xl ml-2 font-semibold cursor-pointer flex text-gray-800 w-40">📖 Glimpse</a>
             </Link>
 
 
@@ -78,13 +78,13 @@ const Header = () => {
                     </div>
 
                     :
-                    <div className=" md:w-3/12 w-2/3 ml-auto mr-4 ">
-                        
+                    <div className=" md:w-3/12 ml-auto mr-4 ">
+
                         <Link href="/signup" >
-                            <a className="  bg-white p-2 hover:text-violet-500 px-6 text-lg font-semibold ">Sign up</a>
+                            <a className="  bg-white p-2 hover:text-violet-500 px-6 md:text-lg text-md font-semibold ">Sign up</a>
                         </Link>
                         <Link href="/login" >
-                            <a className=" bg-white hover:text-violet-500 border rounded p-2 px-6 text-lg font-semibold ">Log In</a>
+                            <a className=" bg-white hover:text-violet-500 border rounded p-2 px-6 md:text-lg text-md font-semibold ">Log In</a>
                         </Link>
                     </div>
                 }

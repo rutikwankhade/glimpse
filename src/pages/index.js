@@ -52,7 +52,7 @@ const Home = () => {
 
       <div className="mt-12 mb-20 flex  flex-col  items-center md:w-10/12 p-2 mx-auto">
         <div className="md:w-10/12 py-4 text-center">
-          <h1 className=" text-5xl text-gray-800 m-10 font-semibold leading-1">
+          <h1 className=" md:text-5xl text-4xl text-gray-800 m-10 font-semibold leading-1">
             Create your own online library and manage your books with ease.
           </h1>
           <h3 className="text-2xl px-6">Add books to your collection as currently reading, want to read, and read.</h3>
@@ -66,34 +66,46 @@ const Home = () => {
 
 
 
+      <div className="shadow md:m-20 bg-white rounded-xl">
 
 
-      <div className="my-10 flex md:flex-row flex-col items-center p-2 md:w-10/12  mx-auto">
+
+        <div className=" flex md:flex-row flex-col items-center  mx-auto">
 
 
-        <div className="md:w-1/2 ">
-          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
-            Share glimpse of the books you read. <span className="italic">Share your thoughts</span> and favorite quotes with glimpse.
-          </h1>
+          <div className="md:w-1/2 p-14 md:py-40">
+            <h1 className=" text-5xl text-gray-800  font-semibold leading-1">
+              Share glimpse of the books you read.
+            </h1>
+            <p className="text-2xl text-gray-700 my-8">Share your thoughts and favorite quotes with glimpse in one click.</p>
+          </div>
+
+
+          <div className="md:w-1/2 p-10 md:py-40 bg-purple-200">
+            <div className=" rounded-xl">
+              <Image src={glimpseShotImg} className="rounded-xl" />
+            </div>
+
+          </div>
+
         </div>
-        <div className="md:w-1/2 shadow-xl rounded-xl bg-white">
-          <Image src={glimpseShotImg} className="rounded-xl" />
+
+
+
+        <div className=" flex md:flex-row flex-col-reverse  items-center  mx-auto">
+
+
+          <div className="md:w-1/2 p-10 md:py-40  bg-purple-200">
+            <Image src={tagsImg} className="rounded-xl " />
+          </div>
+          <div className="md:w-1/2 p-14 md:py-40">
+            <h1 className=" text-5xl text-gray-800  font-semibold leading-1">
+              Find books from different genres
+            </h1>
+            <p className="text-2xl text-gray-700 my-8">like fiction, nonfiction, business, technology, and more.</p>
+          </div>
         </div>
-      </div>
 
-
-
-      <div className="my-10 flex md:flex-row flex-col-reverse  items-center p-2 md:w-10/12  mx-auto">
-
-
-        <div className="md:w-1/2 rounded-xl bg-white shadow-xl">
-          <Image src={tagsImg} className="rounded-xl" />
-        </div>
-        <div className="md:w-1/2">
-          <h1 className=" text-3xl text-gray-800 m-10 font-semibold leading-1">
-            Find books from <span className="italic">different genres</span> like fiction, nonfiction, business, technology, and more.
-          </h1>
-        </div>
       </div>
 
 
@@ -112,7 +124,7 @@ const Home = () => {
           <div className="flex">
             <span className="bg-white px-4 p-1 font-semibold text-sm rounded-full m-2">Community</span>
             <span className="bg-white px-4 p-1 font-semibold text-sm rounded-full m-2">Books</span>
-            <span className="bg-white px-4 p-1 font-semibold text-sm rounded-full m-2">Collection</span>
+            <span className="bg-white px-4 p-1 font-semibold text-sm rounded-full m-2">Collections</span>
           </div>
         </div>
 
@@ -120,11 +132,13 @@ const Home = () => {
 
 
       <div className="flex flex-col items-center justify-center">
+        <a href="https://blog.rutikwankhade.dev/introducing-glimpse-a-readers-corner-to-discover-new-books" target="_blank" rel="noreferrer" className="bg-white p-4 m-2 text-center text-xl hover:scale-105 duration-300 hover:text-purple-600 px-10 my-4 rounded-xl border">🔖 Read complete story of why and how I built glimpse</a>
+
         <div className="rounded-xl w-20" >
           <Image src={scribble1} />
         </div>
 
-        <h1 className="italic text-xl text-gray-800 m-10 font-semibold leading-1">
+        <h1 className="italic  text-md text-gray-800 m-10 font-semibold leading-1">
           made with 💖 by <a href="https://rutikwankhade.dev" target="_blank" className="hover:text-fuchsia-500">Rutik Wankhade</a>
         </h1>
 
