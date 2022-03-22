@@ -35,7 +35,7 @@ const Header = () => {
                     <div className="flex flex-row items-center w-full">
                         <SearchBar />
 
-                        <span className="text-xl mx-2 mb-2 font-semibold">{user.username}</span>
+                        <span className="text-xl md:flex hidden mx-2 mb-2 font-semibold">{user.username}</span>
 
 
                         <Popover className="relative inline-block">

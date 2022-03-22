@@ -45,7 +45,7 @@ const Searchbar = () => {
 
 
     return (
-        <div className="w-full">
+        <div className="w-full mx-2">
 
             <Transition appear show={isOpen}>
 
