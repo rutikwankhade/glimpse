@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const GlimpsePost = ({ post }) => {
     return (
-        <div className="  m-4 bg-white p-4 shadow-sm rounded " key={post._id}>
+        <div className=" w-full m-4 bg-white p-4 shadow-sm rounded " key={post._id}>
             <Link href={`/profile/${post.postedBy._id}`}>
                 <div className="cursor-pointer flex p-2 items-center bg-white">
                     <img src={post.postedBy.avatar} className="rounded-full h-8 w-8 " />
@@ -26,14 +26,14 @@ const GlimpsePost = ({ post }) => {
                     <Link href={`/books/${post.bookId}`}>
                         <img
                             src={post.cover}
-                            className="w-max h-max border m-4 shadow-xl hover:scale-105 duration-300 hover:shadow-2xl cursor-pointer"
+                            className="md:w-max w-20 h-max border m-4 shadow-xl hover:scale-105 duration-300 hover:shadow-2xl cursor-pointer"
                         />
                     </Link>
                 </div>
 
                 <div className="flex items-center mx-8">
-                    <h1 className="text-xl text-gray-700 w-1/2 font-bold">{post.title}&rarr;</h1>
-                    <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{post.category}</span></span>
+                    <h1 className="text-xl text-gray-700 md:w-1/2 font-bold pb-4">{post.title}&rarr;</h1>
+                    <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white md:flex hidden ml-6">{post.category}</span></span>
                 </div>
             </div>
         </div>

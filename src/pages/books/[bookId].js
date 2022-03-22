@@ -9,7 +9,7 @@ import { postBookReview, getReviewsByBookId } from '../../app/features/feedSlice
 import cover from '../../assets/images/cover.jpg'
 import cheveronDownIcon from '../../assets/icons/cheveron-down.svg'
 import Image from 'next/image';
-
+import GlimpsePost from '../../components/GlimpsePost';
 
 
 const options = [
@@ -23,7 +23,7 @@ const BookInfo = (params) => {
 
 
     const dispatch = useDispatch()
-    const {  isAuthenticated} = useSelector((state) => state.auth);
+    const { isAuthenticated } = useSelector((state) => state.auth);
     const { isFetching, bookReviews } = useSelector((state) => state.feed);
 
     const [info, setInfo] = useState()
@@ -161,12 +161,9 @@ const BookInfo = (params) => {
                                                 />
 
                                             </div>
-                                            {/* <img
-                                                src={info && info.volumeInfo.imageLinks.thumbnail}
-                                                className="w-max h-max border m-4  shadow-xl "
-                                            /> */}
+                                          
                                             {info && info.volumeInfo.imageLinks ?
-                                                <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-24  shadow-xl shadow-slate-200 border" />
+                                                <img src={info.volumeInfo.imageLinks.thumbnail} className="  shadow-xl  border" />
                                                 :
                                                 <img src={cover} />
 
@@ -188,8 +185,9 @@ const BookInfo = (params) => {
                                                 const color = getRandomColor()
                                                 setBgColor(color);
                                             }}
-                                            className="bg-gray-50 h-max p-2 border rounded">
+                                            className="flex items-center hover:shadow bg-gray-50 h-max p-2 border rounded">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 17h-1.559l-9.7-10.673A1 1 0 0 0 5.001 6H2v2h2.559l4.09 4.5-4.09 4.501H2v2h3.001a1 1 0 0 0 .74-.327L10 13.987l4.259 4.686a1 1 0 0 0 .74.327H17v3l5-4-5-4v3z"></path><path d="M15.441 8H17v3l5-3.938L17 3v3h-2.001a1 1 0 0 0-.74.327l-3.368 3.707 1.48 1.346L15.441 8z"></path></svg>
+                                        <span className="mx-2 text-xl">Change theme</span>
                                         </button>
 
 
@@ -213,12 +211,11 @@ const BookInfo = (params) => {
 
 
             {info ?
-                <div className="border   p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
-                    <div className="-skew-y-6 border-2 flex-initial p-2 rounded-md h-max border-gray-600  border-l-8 shadow-xl  ">
+                <div className="shadow-sm p-10  md:h-80 bg-white rounded-xl mx-auto flex flex-row ">
+                    <div className=" h-max  shadow-md border  ">
 
-                        {/* <img src={info && info.volumeInfo?.imageLinks.thumbnail} className="w-max h-max" /> */}
                         {info.volumeInfo.imageLinks ?
-                            <img src={info.volumeInfo.imageLinks.thumbnail} className="rounded-xl w-28" />
+                            <img src={info.volumeInfo.imageLinks.thumbnail} className=" w-max" />
                             :
                             <Image src={cover} />
 
@@ -227,26 +224,23 @@ const BookInfo = (params) => {
                     </div>
 
                     <div className="w-8/12  m-6">
-                        <h1 className="text-4xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
-                        <p className="text-xl text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
+                        <h1 className="md:text-4xl text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
+                        <p className="md:text-xl text-md text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
 
-                        <div className="flex ">
+                        <div className="flex text-md">
                             <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2" key={author}>{author}</span>)}</span>
                             <span className="mx-4"><span className="font-semibold" >{info && info.volumeInfo.pageCount}</span> pages</span>
-                            <span>{info && info.volumeInfo.categories?.map(category => <span className="font-semibold bg-yellow-100 rounded px-4 mx-2" key={category}>{category}</span>)}</span>
+                            <span>{info && info.volumeInfo.categories?.map(category => <span className="font-semibold bg-yellow-100 rounded-full py-1 px-4 mx-2" key={category}>{category}</span>)}</span>
 
                         </div>
 
 
-                        <div className="mt-6 flex ">
+                        <div className="mt-6 flex items-center md:flex-row flex-col ">
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className="mr-4 h-14 text-white bg-gray-700 px-6 text-xl  font-semibold rounded-lg p-2">
+                                className="mr-4 md:h-14 text-white bg-gray-700 hover:bg-gray-800 px-6 text-lg md:text-xl font-semibold rounded-lg p-2">
                                 ✨ Share a glimpse
                             </button>
-
-                           
-
 
 
                             <Listbox
@@ -255,7 +249,7 @@ const BookInfo = (params) => {
                                 className="flex flex-col w-60  text-left"
                                 as="div"
                             >
-                                <Listbox.Button className="border  px-4 p-2 text-xl rounded flex items-center">
+                                <Listbox.Button className="border font-semibold hover:shadow px-4 p-2 text-lg md:text-xl rounded flex items-center">
                                     <span className="mx-2">{bookStatus.emoji}</span>
                                     <span>{bookStatus.type}</span>
                                     <span className="ml-auto mr-2 mt-2"><Image src={cheveronDownIcon} /></span>
@@ -266,7 +260,7 @@ const BookInfo = (params) => {
                                         <Listbox.Option
                                             key={option.id}
                                             value={option}
-                                            className="p-2 hover:bg-yellow-200 cursor-pointer"
+                                            className="p-2 hover:bg-purple-100 cursor-pointer"
                                         >
                                             <span className="">{option.emoji}</span> {option.type}
                                         </Listbox.Option>
@@ -287,51 +281,20 @@ const BookInfo = (params) => {
                 {
                     bookReviews.length ?
 
-                        <div className="w-8/12">
-                            {bookReviews && bookReviews.map(post => {
-                                return (
-                                    <div className="  m-4  border rounded " key={post._id}>
-                                        <div className="flex p-2 items-center bg-white">
-                                            <Link href={`/profile/${post.postedBy._id}`}>
-
-                                                <img src={post.postedBy.avatar} className="rounded-full h-8 w-8 cursor-pointer" />
-                                            </Link>
-                                            <span className="text-md font-medium text-gray-600 mx-2">{post.postedBy.username}</span>
-                                        </div>
-
-                                        <div className=" rounded h-96 flex flex-col"
-                                            style={{ backgroundColor: post.primaryColor }}
-                                        >
-                                            <div className="flex items-center justify-center ">
-
-                                                <div className="w-2/3  m-4">
-                                                    <p className="w-full bg-green-100  h-64 rounded-xl outline-none font-sans  p-6  z-40 text-xl font-semibold text-gray-600"
-                                                        style={{ backgroundColor: post.secondaryColor }}>
-                                                        {post.review}
-                                                    </p>
-                                                </div>
-                                                <Link href={`/books/${post.bookId}`}>
-                                                    <img
-                                                        src={post.cover}
-                                                        className="w-max h-max border m-4 shadow-xl transform hover:scale-105 cursor-pointer"
-                                                    />
-                                                </Link>
-                                            </div>
-
-                                            <div className="flex items-center mx-8">
-                                                <h1 className="text-2xl text-gray-700 w-1/2 font-bold">{post.title}&rarr;</h1>
-                                                <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white ml-6">{post.category}</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                )
-
-                            })
-                            }
-                        </div> :
                         <div className="">
-                           <h2 className="text-xl text-gray-500 m-10">No glimpse of this book has been shared by anyone yet.</h2>
+                            {
+                                bookReviews && bookReviews.map(post => {
+                                    return (
+                                        <div className="md:w-2/3">
+                                            <GlimpsePost post={post} />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        :
+                        <div >
+                            <h2 className="text-xl text-gray-500 m-10">No glimpse of this book has been shared by anyone yet.</h2>
                         </div>
                 }
             </div>

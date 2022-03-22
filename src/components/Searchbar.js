@@ -160,7 +160,7 @@ const Searchbar = () => {
             </Transition>
 
 
-            <div className="flex p-2 items-center md:w-1/2 mx-auto m-1 border bg-gray-50 shadow-gray-50 rounded-full">
+            <div className="flex p-2 items-center md:w-1/2 mx-auto hover:shadow-sm bg-gray-50 shadow-gray-50 rounded-full">
                 <Image className="opacity-30 " src={searchIcon} />
                 <input
                     placeholder="  Search book by name or author"

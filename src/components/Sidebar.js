@@ -12,7 +12,7 @@ const Sidebar = () => {
         const { user, userId, isAuthenticated } = useSelector((state) => state.auth);
 
     return (
-        <div className="h-full sticky md:top-24 bottom-0 md:z-0 z-10 bg-white md:w-80 flex justify-center flex-row md:flex-col md:text-xl text-md font-semibold p-4  rounded-xl mx-4">
+        <div className="h-full sticky md:top-24 bottom-0 md:z-0 z-10 bg-white md:w-80 flex justify-center flex-row md:flex-col md:text-xl text-md font-semibold p-4  rounded-xl">
 
 
             <Link href="/bookclub">
