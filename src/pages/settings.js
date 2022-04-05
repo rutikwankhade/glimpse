@@ -48,9 +48,9 @@ const Settings = () => {
 
 
     return (
-        <div>
+        <div className="bg-gray-50 p-2 ">
 
-            <div className="rounded-xl p-10 border  flex flex-col justify-center bg-white">
+            <div className="rounded-xl p-10 md:w-1/2 mx-auto mt-10 border  flex flex-col justify-center bg-white">
                 <h1 className="text-xl font-semibold my-4">Update Profile</h1>
                 <div className="flex items-center">
 
@@ -65,12 +65,13 @@ const Settings = () => {
                     />
 
                     <span>{isUploading ? "uploading..." : ""}</span>
-                    <button
+                   
+                </div>
+                 <button
                         onClick={() => dispatch(updateUserData({ userId: userId, avatarUrl: avatarUrl }))}
-                        className={`${image ? '' : 'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 rounded-xl`}>
+                        className={`${image ? '' : 'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 w-40 my-4 rounded-xl`}>
                         {updating ? 'updating...' : 'Update'}
                     </button>
-                </div>
             </div>
 
         </div>
