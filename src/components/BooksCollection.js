@@ -23,7 +23,7 @@ const BooksCollection = ({ collection, posts }) => {
                         <div className="">
                             {
                                 (collection && collection?.filter(book => book.status === "Want to read").length) ?
-                                    <div className="flex flex-wrap">
+                                    <div className="flex flex-wrap justify-center">
                                         {
                                             collection?.filter(book => book.status === "Want to read").map(book => {
                                                 return <BookCard book={book} />
@@ -47,7 +47,7 @@ const BooksCollection = ({ collection, posts }) => {
                         <div className="">
                             {
                                 (collection && collection?.filter(book => book.status === "Currently reading").length) ?
-                                    <div className="flex flex-wrap">
+                                    <div className="flex flex-wrap justify-center">
                                         {
                                             collection?.filter(book => book.status === "Currently reading").map(book => {
                                                 return <BookCard book={book} />
@@ -73,7 +73,7 @@ const BooksCollection = ({ collection, posts }) => {
                         <div className="">
                             {
                                 (collection && collection?.filter(book => book.status === "Read").length) ?
-                                    <div className="flex flex-wrap">
+                                    <div className="flex flex-wrap justify-center">
                                         {
                                             collection?.filter(book => book.status === "Read").map(book => {
                                                 return <BookCard book={book} />

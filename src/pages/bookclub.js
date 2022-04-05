@@ -40,7 +40,7 @@ function BookClub() {
       </Head>
 
 
-      <main className="flex md:flex-row flex-col">
+      <main className="flex md:flex-row flex-col md:w-10/12 mx-auto">
 
 
         <div className="flex flex-col md:w-7/12">

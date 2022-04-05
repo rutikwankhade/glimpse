@@ -51,9 +51,9 @@ const Profile = ({ params }) => {
 
 
     return (
-        <div className="w-full flex flex-row ">
+        <div className="w-full flex md:flex-row flex-col">
 
-            <div className="md:w-1/4 border top-0 sticky h-84 m-2 rounded-xl bg-white p-6">
+            <div className="md:w-1/4 border top-0 md:sticky h-84 m-2 rounded-xl bg-white p-6">
 
                 <div className="flex flex-col justify-center text-center items-center mx-auto md:px-20">
                     <div className="flex flex-col justify-center">

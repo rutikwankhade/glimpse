@@ -35,10 +35,10 @@ const Category = (params) => {
 
     return (
         <div className=" w-full">
-            <div className="flex bg-gray-50 rounded-xl items-center  p-2 text-4xl">
-                <span className="border flex rounded-xl p-4 h-16 w-16 bg-white justify-center">{emoji}</span>
+            <div className="flex bg-gray-50 py-4 rounded-xl items-center justify-center  p-2 ">
+                <span className="border text-5xl flex rounded-xl p-4 h-20 w-20 bg-white justify-center">{emoji}</span>
 
-                <h1 className=" font-bold ml-4 capitalize text-gray-800">{params.params.category}</h1>
+                <h1 className=" font-bold ml-4 text-4xl capitalize text-gray-800">{params.params.category}</h1>
             </div>
 
 

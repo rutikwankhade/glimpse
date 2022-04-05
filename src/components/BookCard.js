@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const BookCard = ({ book }) => {
     return (
-        <div key={book.bookId} className="md:w-1/4  ">
+        <div key={book.bookId} className="md:w-1/4 w-5/12 ">
             <Link href={`/books/${book.bookId}`} >
                 <div
                     className="bg-white h-64 cursor-pointer hover:bg-gray-50 flex flex-col border cursor m-2 p-4 px-6 items-center  shadow-sm rounded-xl ">
