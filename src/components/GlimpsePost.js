@@ -33,7 +33,10 @@ const GlimpsePost = ({ post }) => {
 
                 <div className="flex items-center mx-8">
                     <h1 className="text-xl text-gray-700 md:w-1/2 font-bold pb-4">{post.title}&rarr;</h1>
-                    <span className="ml-auto"><span className="font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white md:flex hidden ml-6">{post.category}</span></span>
+
+                    <Link href={`/books/category/${post.category}`} >
+                        <span className="ml-auto"><span className=" cursor-pointer font-semibold text-sm text-gray-500 rounded-full px-4 p-1 border border-white bg-white md:flex hidden ml-6">{post.category}</span></span>
+                    </Link>
                 </div>
             </div>
         </div>

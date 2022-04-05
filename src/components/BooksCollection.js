@@ -6,6 +6,10 @@ import GlimpsePost from './GlimpsePost';
 const BooksCollection = ({ collection, posts }) => {
 
 
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
+
     return (
         <div className="w-full ">
             <Tab.Group as="div" className="">
