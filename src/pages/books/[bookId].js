@@ -10,6 +10,7 @@ import cover from '../../assets/images/cover.jpg'
 import cheveronDownIcon from '../../assets/icons/cheveron-down.svg'
 import Image from 'next/image';
 import GlimpsePost from '../../components/GlimpsePost';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const options = [
@@ -75,6 +76,8 @@ const BookInfo = (params) => {
             cover: info.volumeInfo.imageLinks.thumbnail,
             title: info.volumeInfo.title
         }
+
+
 
         dispatch(postBookReview(review))
 
@@ -211,7 +214,7 @@ const BookInfo = (params) => {
 
 
             {info ?
-                <div className="shadow-sm p-10  md:h-80 bg-white rounded-xl mx-auto flex flex-row ">
+                <div className="shadow-sm p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
                     <div className=" h-max  shadow-md border  ">
 
                         {info.volumeInfo.imageLinks ?
@@ -235,10 +238,10 @@ const BookInfo = (params) => {
                         </div>
 
 
-                        <div className="mt-6 flex items-center md:flex-row flex-col ">
+                        <div className="mt-6 flex md:flex-row flex-col ">
                             <button
                                 onClick={() => setIsOpen(true)}
-                                className="mr-4 md:h-14 text-white bg-gray-700 hover:bg-gray-800 px-6 text-lg md:text-xl font-semibold rounded-lg p-2">
+                                className="mr-4 h-14 text-white bg-gray-700 hover:bg-gray-800 px-6 text-lg md:text-xl font-semibold rounded-lg p-2">
                                 ✨ Share a glimpse
                             </button>
 

@@ -51,22 +51,22 @@ const Profile = ({ params }) => {
 
 
     return (
-        <div className="w-full">
+        <div className="w-full flex flex-row ">
 
-            <div className="w-full border  p-6">
+            <div className="md:w-1/4 border top-0 sticky h-84 m-2 rounded-xl bg-white p-6">
 
-                <div className="flex items-center mx-auto md:px-20">
+                <div className="flex flex-col justify-center text-center items-center mx-auto md:px-20">
                     <div className="flex flex-col justify-center">
-                        <img src={profile.avatar} className="mx-2 rounded-full  h-20 w-20" />
+                        <img src={profile.avatar} className="mx-2 rounded-full  h-24 w-24" />
 
                     </div>
 
                     <div className="mx-2">
                         <span className="rounded-full mx-2 text-2xl font-semibold">{profile.username}</span>
 
-                        <div className="flex text-md font-medium">
-                            <span className="mx-2">{profile && profile.following?.length} following</span>
-                            <span className="mx-2">{profile && profile.followers?.length} followers</span>
+                        <div className="flex text-md font-medium my-4">
+                            <span className="mx-2 flex"><span className="mr-2">{profile && profile.following?.length}</span> following</span>
+                            <span className="mx-2 flex"><span className="mr-2">{profile && profile.followers?.length}</span> followers</span>
                         </div>
 
                     </div>
