@@ -4,16 +4,67 @@ import BookCard from './BookCard';
 import GlimpsePost from './GlimpsePost';
 
 const BooksCollection = ({ collection, posts }) => {
+
+
     return (
         <div className="w-full ">
             <Tab.Group as="div" className="">
 
                 <Tab.List className=" m-2 rounded-xl justify-center bg-gray-50 p-2  flex flex-row flex-wrap items-center ">
-                    <Tab className=" rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">🔖 Want to Read</Tab>
-                    <Tab className="rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">📖 Currently Reading</Tab>
-                    <Tab className="rounded-xl  shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">✅ Read</Tab>
-                    <Tab className="rounded-xl  shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">✨ Glimpse</Tab>
-                    <Tab className="rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2">🚀 Stats</Tab>
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                'rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2',
+                                selected
+                                    ? ' border-2 border-gray-600 '
+                                    : ''
+                            )
+                        }
+                    >🔖 Want to Read</Tab>
+
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                'rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2',
+                                selected
+                                    ? ' border-2 border-gray-600 '
+                                    : ''
+                            )
+                        }
+                    >📖 Currently Reading</Tab>
+
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                'rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2',
+                                selected
+                                    ? ' border-2 border-gray-600 '
+                                    : ''
+                            )
+                        }
+                    >✅ Read</Tab>
+
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                'rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2',
+                                selected
+                                    ? ' border-2 border-gray-600 '
+                                    : ''
+                            )
+                        }
+                    >✨ Glimpse</Tab>
+
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                'rounded-xl shadow-lg px-4 m-2 bg-white text-lg font-semibold p-2',
+                                selected
+                                    ? ' border-2 border-gray-600 '
+                                    : ''
+                            )
+                        }
+                    >📊 Stats</Tab>
 
                 </Tab.List>
 
