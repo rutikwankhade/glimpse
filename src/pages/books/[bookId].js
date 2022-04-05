@@ -104,7 +104,7 @@ const BookInfo = (params) => {
 
 
     return (
-        <div className="bg-gray-50 p-4 w-full items-center justify-center">
+        <div className="bg-gray-50 p-2 w-full items-center justify-center">
             <Transition appear show={isOpen}>
 
                 <Dialog
@@ -164,7 +164,7 @@ const BookInfo = (params) => {
                                                 />
 
                                             </div>
-                                          
+
                                             {info && info.volumeInfo.imageLinks ?
                                                 <img src={info.volumeInfo.imageLinks.thumbnail} className="  shadow-xl  border" />
                                                 :
@@ -190,7 +190,7 @@ const BookInfo = (params) => {
                                             }}
                                             className="flex items-center hover:shadow bg-gray-50 h-max p-2 border rounded">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 17h-1.559l-9.7-10.673A1 1 0 0 0 5.001 6H2v2h2.559l4.09 4.5-4.09 4.501H2v2h3.001a1 1 0 0 0 .74-.327L10 13.987l4.259 4.686a1 1 0 0 0 .74.327H17v3l5-4-5-4v3z"></path><path d="M15.441 8H17v3l5-3.938L17 3v3h-2.001a1 1 0 0 0-.74.327l-3.368 3.707 1.48 1.346L15.441 8z"></path></svg>
-                                        <span className="mx-2 text-xl">Change theme</span>
+                                            <span className="mx-2 text-xl">Change theme</span>
                                         </button>
 
 
@@ -213,93 +213,124 @@ const BookInfo = (params) => {
 
 
 
-            {info ?
-                <div className="shadow-sm p-10  h-80 bg-white rounded-xl mx-auto flex flex-row ">
-                    <div className=" h-max  shadow-md border  ">
 
-                        {info.volumeInfo.imageLinks ?
-                            <img src={info.volumeInfo.imageLinks.thumbnail} className=" w-max" />
+            <div className="flex  md:flex-row flex-col justify-center">
+
+
+
+                <div className="w-1/2">
+
+
+                    {info ?
+                        <div className="sticky justify-center top-20 p-10  mx-auto  ">
+
+                            <div className="flex flex-row items-center  justify-center">
+
+                                <div className=" h-max  shadow-xl border  ">
+
+                                    {info.volumeInfo.imageLinks ?
+                                        <img src={info.volumeInfo.imageLinks.thumbnail} className=" w-max" />
+                                        :
+                                        <Image src={cover} />
+
+                                    }
+
+                                </div>
+
+                                <div className="  m-6">
+                                    <h1 className="md:text-4xl text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
+                                    <p className="text-md text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
+
+                                    <div className="flex ">
+                                        <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2" key={author}>{author}</span>)}</span>
+                                        <span className="mx-4"><span className="font-semibold" >{info && info.volumeInfo.pageCount}</span> pages</span>
+
+
+
+
+                                    </div>
+
+                                    <div className="mt-4">
+                                        {
+                                            info && info.volumeInfo.categories?.map(category => <span className="font-semibold bg-yellow-100 hover:bg-yellow-200 rounded-full py-1 px-4  mt-4" key={category}>
+                                                <Link href={`/books/category/${category}`} key={category}>
+
+                                                    {category}
+                                                </Link>
+                                            </span>)}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div className="mt-10 flex md:flex-row justify-center">
+
+
+
+                                <Listbox
+                                    value={bookStatus}
+                                    onChange={(option) => handleBookStatus(option)}
+                                    className="flex flex-col bg-white text-left"
+                                    as="div"
+                                >
+                                    <Listbox.Button className="border font-semibold hover:shadow-sm px-4 p-2 text-sm md:text-lg rounded-xl flex items-center">
+                                        <span className="">{bookStatus.emoji}</span>
+                                        <span className="">{bookStatus.type}</span>
+                                        <span className="ml-auto mr-2 mt-2"><Image src={cheveronDownIcon} /></span>
+                                    </Listbox.Button>
+
+                                    <Listbox.Options className="border bg-white rounded shadow-lg ">
+                                        {options.map((option) => (
+                                            <Listbox.Option
+                                                key={option.id}
+                                                value={option}
+                                                className="p-2 hover:bg-purple-100 cursor-pointer"
+                                            >
+                                                <span className="">{option.emoji}</span> {option.type}
+                                            </Listbox.Option>
+                                        ))}
+                                    </Listbox.Options>
+                                </Listbox>
+
+                                <button
+                                    onClick={() => setIsOpen(true)}
+                                    className="mx-4 h-14  bg-white border  px-4  text-sm md:text-lg font-semibold  hover:shadow-sm rounded-xl p-2">
+                                    ✨ Share a glimpse
+                                </button>
+
+                            </div>
+                        </div> :
+                        <div></div>
+
+                    }
+
+                </div>
+
+                <div className="md:w-1/2 md:px-4 ">
+                    {
+                        bookReviews.length ?
+
+                            <div className=" flex flex-col items-center justify-center">
+                                {
+                                    bookReviews && bookReviews.map(post => {
+                                        return (
+                                            <div className="">
+                                                <GlimpsePost post={post} />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                             :
-                            <Image src={cover} />
-
-                        }
-
-                    </div>
-
-                    <div className="w-8/12  m-6">
-                        <h1 className="md:text-4xl text-2xl text-gray-700 font-bold">{info && info.volumeInfo.title}</h1>
-                        <p className="md:text-xl text-md text-gray-600 my-2">{info && info.volumeInfo.subtitle}</p>
-
-                        <div className="flex text-md">
-                            <span>by{info && info.volumeInfo.authors.map(author => <span className="font-semibold mx-2" key={author}>{author}</span>)}</span>
-                            <span className="mx-4"><span className="font-semibold" >{info && info.volumeInfo.pageCount}</span> pages</span>
-                            <span>{info && info.volumeInfo.categories?.map(category => <span className="font-semibold bg-yellow-100 rounded-full py-1 px-4 mx-2" key={category}>{category}</span>)}</span>
-
-                        </div>
-
-
-                        <div className="mt-6 flex md:flex-row flex-col ">
-                            <button
-                                onClick={() => setIsOpen(true)}
-                                className="mr-4 h-14 text-white bg-gray-700 hover:bg-gray-800 px-6 text-lg md:text-xl font-semibold rounded-lg p-2">
-                                ✨ Share a glimpse
-                            </button>
-
-
-                            <Listbox
-                                value={bookStatus}
-                                onChange={(option) => handleBookStatus(option)}
-                                className="flex flex-col w-60  text-left"
-                                as="div"
-                            >
-                                <Listbox.Button className="border font-semibold hover:shadow px-4 p-2 text-lg md:text-xl rounded flex items-center">
-                                    <span className="mx-2">{bookStatus.emoji}</span>
-                                    <span>{bookStatus.type}</span>
-                                    <span className="ml-auto mr-2 mt-2"><Image src={cheveronDownIcon} /></span>
-                                </Listbox.Button>
-
-                                <Listbox.Options className="border bg-white rounded shadow-lg ">
-                                    {options.map((option) => (
-                                        <Listbox.Option
-                                            key={option.id}
-                                            value={option}
-                                            className="p-2 hover:bg-purple-100 cursor-pointer"
-                                        >
-                                            <span className="">{option.emoji}</span> {option.type}
-                                        </Listbox.Option>
-                                    ))}
-                                </Listbox.Options>
-                            </Listbox>
-
-                        </div>
-                    </div>
-                </div> :
-                <div></div>
-
-            }
-
-
-
-            <div>
-                {
-                    bookReviews.length ?
-
-                        <div className="">
-                            {
-                                bookReviews && bookReviews.map(post => {
-                                    return (
-                                        <div className="md:w-2/3">
-                                            <GlimpsePost post={post} />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        :
-                        <div >
-                            <h2 className="text-xl text-gray-500 m-10">No glimpse of this book has been shared by anyone yet.</h2>
-                        </div>
-                }
+                            <div >
+                                <h2 className="text-2xl text-center py-20 text-gray-500 m-10">No glimpse of this book has been shared by anyone yet.</h2>
+                            </div>
+                    }
+                </div>
             </div>
 
         </div>

@@ -22,7 +22,7 @@ const Category = (params) => {
 
     useEffect(() => {
         const res = categories.find(obj => {
-            return obj.name === params.params.category
+            return obj.name === params.params.category || 'x'
         })
 
         setEmoji(res.emoji)
