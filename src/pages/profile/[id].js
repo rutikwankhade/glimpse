@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { getUserProfile, followReader, unfollowReader, getPostsByUserId } from "../../app/features/userProfileSlice";
 import HomeLayout from "../../components/HomeLayout";
 import BooksCollection from "../../components/BooksCollection";
+import loaderIcon from '../../assets/icons/loader.svg'
 
 const Profile = ({ params }) => {
     const dispatch = useDispatch()
     const { profile, userFollowStatus, userPosts } = useSelector((state) => state.profile);
-    const { userId, isAuthenticated } = useSelector((state) => state.auth);
+    const { userId, isAuthenticated, user } = useSelector((state) => state.auth);
 
     const [isUserFollowed, setIsUserFollowed] = useState(false)
 
@@ -20,12 +21,7 @@ const Profile = ({ params }) => {
 
     useEffect(() => {
         if (profile && profile.followers?.length > 0) {
-
-            profile.followers.forEach((user) => {
-                if (user._id === userId) {
-                    setIsUserFollowed(true);
-                }
-            });
+            setIsUserFollowed(profile.followers.includes(userId));
         }
 
         else {
@@ -74,28 +70,28 @@ const Profile = ({ params }) => {
 
                     <div className="ml-auto mr-10">
 
-                            {(userId !== params.id && isAuthenticated) ?
-                                <div>
-                                    {
-                                        isUserFollowed ?
-                                            <button
-                                                onClick={() => handleUnfollowUser()}
-                                                className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                                {userFollowStatus === 'loading' ? <span>...</span> : <span>Unfollow</span>}
-                                            </button>
-                                            :
-                                            <button
-                                                onClick={() => handleFollowUser()}
-                                                className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                                {userFollowStatus === 'loading' ? <span>...</span> : <span>Follow</span>}
-                                            </button>
+                        {(userId !== params.id && isAuthenticated) ?
+                            <div>
+                                {
+                                    isUserFollowed ?
+                                        <button
+                                            onClick={() => handleUnfollowUser()}
+                                            className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
+                                            {userFollowStatus === 'loading' ? <span >unfollowing...</span> : <span>Unfollow</span>}
+                                        </button>
+                                        :
+                                        <button
+                                            onClick={() => handleFollowUser()}
+                                            className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
+                                            {userFollowStatus === 'loading' ? <span>following...</span> : <span>Follow</span>}
+                                        </button>
 
-                                    }
-                                </div>
-                                :
-                                <div></div>
+                                }
+                            </div>
+                            :
+                            <div></div>
 
-                            }
+                        }
                     </div>
 
                 </div>

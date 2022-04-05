@@ -86,9 +86,9 @@ const BooksCollection = ({ collection, posts }) => {
                                         }
 
                                     </div> :
-                                    <div className="flex flex-col mx-auto text-center my-10 w-max p-8 rounded-xl bg-yellow-50">
-                                        <h1 className="text-2xl font-semibold">No books on your list yet.</h1>
-                                        <h2 className="text-xl">Follow other readers and discover new books from your feed.</h2>
+                                    <div className="flex flex-col text-center my-20  ">
+                                        <h1 className="text-2xl text-gray-400 ">Nothing on the list yet.</h1>
+                                        <h2 className="text-gray-400 text-xl py-2">Follow other readers and discover new books from your feed.</h2>
                                     </div>
 
                             }
@@ -111,9 +111,9 @@ const BooksCollection = ({ collection, posts }) => {
 
                                     </div> :
 
-                                    <div className="flex flex-col mx-auto text-center my-10 w-max p-8 rounded-xl bg-yellow-50">
-                                        <h1 className="text-2xl font-semibold">Nothing on your shelf right now.</h1>
-                                        <h2 className="text-xl">This could be the right time to pick a new book.</h2>
+                                    <div className="flex flex-col text-center my-20  ">
+                                        <h1 className="text-2xl text-gray-400 ">Not reading any book currently</h1>
+                                        <h2 className="text-xl text-gray-400 py-2">This could be the right time to pick a new book.</h2>
                                     </div>
 
                             }
@@ -137,9 +137,9 @@ const BooksCollection = ({ collection, posts }) => {
 
                                     </div> :
 
-                                    <div className="flex flex-col mx-auto text-center my-10 w-max p-8 rounded-xl bg-yellow-50">
-                                        <h1 className="text-2xl font-semibold">You haven't marked any book as read yet.</h1>
-                                        <h2 className="text-xl">This is your sign to stat reading!</h2>
+                                    <div className="flex flex-col  text-center my-20 ">
+                                        <h1 className="text-2xl text-gray-400">Shelf is empty</h1>
+                                        <h2 className="text-xl text-gray-400 py-2">This is your sign to start reading!</h2>
                                     </div>
 
                             }
