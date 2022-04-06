@@ -1,27 +1,22 @@
-# Next.js + Tailwind CSS Example
+# 📕 Glimpse
+<img src="https://user-images.githubusercontent.com/47467468/156428564-6426ee45-085a-4db6-9d5c-fe7ed2243046.png" />
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## 🚀 Demo
+- You can see the live version [here](https://glimpseapp.netlify.app).
+- Also you can checkout my glimpse profile [here](https://glimpseapp.netlify.app/profile/62185ec259dc133d1a0080e3)
 
-## Preview
+## ✨ Features
+- Instant search for books from the database of thousands of books. You can either search by book name or the author's name.
+- Find books based on different categories like fiction, nonfiction, business, technology, and more.
+- Share glimpse of the books you read and liked in one click. 
+- Add books to your collection as currently reading, want to read, and read. 
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## 🛠 Built with
+- Nextjs
+- TailwindCSS
+- Express
+- MongoDB
+- Redux Toolkit
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This was my submission for the [Netlify X Hashnode hackathon](https://townhall.hashnode.com/netlify-x-hashnode-hackathon-winners) in which glimpse was among the runner ups.
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
