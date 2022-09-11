@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { registerUser} from "../app/features/authSlice";
+import { registerUser, loginUser} from "../app/features/authSlice";
 
 
 const SignUp = () => {
@@ -21,6 +21,16 @@ const SignUp = () => {
     const onSubmit = (data) => {
         console.log(data);
         dispatch(registerUser(data))
+
+    }
+
+
+    const handleGuestLogin = () => {
+        const data = {
+            email: "jhondoe@gmail.com",
+            password: "jhondoe123"
+        }
+        dispatch(loginUser(data))
 
     }
 
@@ -98,6 +108,10 @@ const SignUp = () => {
                         </Link>
 
                     </div>
+
+                    <button
+                        onClick={()=>handleGuestLogin()}
+                        className="m-4 bg-purple-400 mx-auto px-6 font-semibold text-md hover:bg-purple-500 text-white rounded-full p-2">Or Continue as a Guest</button>
 
                 </form>
 

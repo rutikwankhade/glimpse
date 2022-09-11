@@ -13,12 +13,21 @@ const Login = () => {
     const router = useRouter()
     const dispatch = useDispatch()
 
-    const { isFetching, message , isAuthenticated,user} = useSelector((state) => state.auth);
+    const { isFetching, message, isAuthenticated, user } = useSelector((state) => state.auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
 
-     const onSubmit = (data) => {
+    const onSubmit = (data) => {
         console.log(data);
+        dispatch(loginUser(data))
+
+    }
+
+    const handleGuestLogin = () => {
+        const data = {
+            email: "jhondoe@gmail.com",
+            password: "jhondoe123"
+        }
         dispatch(loginUser(data))
 
     }
@@ -29,7 +38,7 @@ const Login = () => {
             router.push('/bookclub');
         }
 
-    }, [isAuthenticated,user]);
+    }, [isAuthenticated, user]);
 
     return (
         <div className="w-full bg-fuchsia-50 h-screen">
@@ -77,6 +86,10 @@ const Login = () => {
                         </Link>
 
                     </div>
+
+                    <button
+                        onClick={()=>handleGuestLogin()}
+                        className="m-4 bg-purple-400 mx-auto px-6 font-semibold text-md hover:bg-purple-500 text-white rounded-full p-2">Or Continue as a Guest</button>
 
                 </form>
 
