@@ -6,7 +6,8 @@ import { useForm } from "react-hook-form";
 
 import { loginUser } from "../app/features/authSlice";
 import toast, { Toaster } from 'react-hot-toast';
-
+import Head from 'next/head'
+import favicon from '../../public/images/favicon.png';
 
 const Login = () => {
 

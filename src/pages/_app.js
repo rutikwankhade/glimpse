@@ -7,6 +7,7 @@ function MyApp(props) {
 
   return (
     <Provider store={store}>
+    
       <MainApp {...props} />
     </Provider>
   )

@@ -12,6 +12,7 @@ import libraryImg from '../assets/images/library.png'
 import glimpseShotImg from '../assets/images/glimpse-shot.png'
 import tagsImg from '../assets/images/tags.png'
 import Head from 'next/head';
+import favicon from '../../public/images/favicon.png';
 
 const Home = () => {
   const router = useRouter()
@@ -32,7 +33,7 @@ const Home = () => {
       <Head>
         <title>Glimpse</title>
 
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon shortcut" href={favicon.src} />
         <meta
           property="og:url"
           content="https://glimpseapp.netlify.app"

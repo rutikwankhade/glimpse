@@ -6,6 +6,7 @@ import HomeLayout from '../components/HomeLayout'
 import { useSelector, useDispatch } from "react-redux";
 import { getExploreFeed, getLatestUsers, getUserFeed } from '../app/features/feedSlice'
 import GlimpsePost from '../components/GlimpsePost'
+import favicon from '../../public/images/favicon.png';
 
 function BookClub() {
   const dispatch = useDispatch()
@@ -36,7 +37,7 @@ function BookClub() {
     <div className="bg-gray-50 w-full pb-10">
       <Head>
         <title>bookclub</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href={favicon.src} />
       </Head>
 
 

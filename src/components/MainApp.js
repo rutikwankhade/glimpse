@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import Header from './Header'
 import { loadUser } from '../app/features/authSlice'
 import setAuthToken from '../utils/setAuthToken'
+import Head from 'next/head'
+import favicon from '../../public/images/favicon.png';
 
 function MainApp({ Component, pageProps: { ...pageProps } }) {
 
@@ -22,6 +24,10 @@ function MainApp({ Component, pageProps: { ...pageProps } }) {
 
     return getLayout(
         <div className="w-full">
+             <Head>
+        <title>bookclub</title>
+        <link rel="icon" href={favicon.src} />
+      </Head>
             {/* <Header /> */}
             <div className="w-full">
                     <Component {...pageProps} />
