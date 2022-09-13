@@ -31,6 +31,7 @@ const Home = () => {
 
       <Head>
         <title>Glimpse</title>
+
         <link rel="icon" href="/favicon.png" />
         <meta
           property="og:url"

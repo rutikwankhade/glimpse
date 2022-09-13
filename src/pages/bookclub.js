@@ -36,7 +36,7 @@ function BookClub() {
     <div className="bg-gray-50 w-full pb-10">
       <Head>
         <title>bookclub</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
 
