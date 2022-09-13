@@ -77,13 +77,13 @@ const Profile = ({ params }) => {
                                         <button
                                             onClick={() => handleUnfollowUser()}
                                             className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                            {userFollowStatus === 'loading' ? <span >unfollowing...</span> : <span>Unfollow</span>}
+                                            {userFollowStatus === 'loading' ? <span >...</span> : <span>Unfollow</span>}
                                         </button>
                                         :
                                         <button
                                             onClick={() => handleFollowUser()}
                                             className="bg-gray-700 text-white rounded-full px-10 text-xl p-2">
-                                            {userFollowStatus === 'loading' ? <span>following...</span> : <span>Follow</span>}
+                                            {userFollowStatus === 'loading' ? <span>...</span> : <span>Follow</span>}
                                         </button>
 
                                 }

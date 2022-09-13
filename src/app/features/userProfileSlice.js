@@ -186,7 +186,10 @@ export const userProfileSlice = createSlice({
       console.log(action.payload)
 
       state.userFollowStatus = "success";
-      state.profile = action.payload.user;
+       if (action.payload.user) {
+              state.profile = action.payload.user;
+
+      }
     },
     [unfollowReader.rejected]: (state, action) => {
       state.userFollowStatus = "error";
