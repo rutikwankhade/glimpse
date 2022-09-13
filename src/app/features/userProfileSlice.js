@@ -11,7 +11,7 @@ export const getUserProfile = createAsyncThunk(
     console.log(id)
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/user/${id}`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/user/${id}`);
 
       if (res.data) {
         // console.log(res)
@@ -21,7 +21,7 @@ export const getUserProfile = createAsyncThunk(
 
     } catch (err) {
 
-      console.log("Couldn't grt profile", err);
+      console.log("Couldn't get profile", err);
     }
   }
 );
@@ -46,7 +46,7 @@ export const addBookToLibrary = createAsyncThunk(
     // console.log(body)
 
     try {
-      const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/user/addbook', body, config);
+      const res = await axios.post('https://glimpse-backend-production.up.railway.app/api/user/addbook', body, config);
 
       if (res.data) {
         return res.data;
@@ -67,7 +67,7 @@ export const followReader = createAsyncThunk(
   "/api/user/follow",
   async (followReaderID) => {
     try {
-      const response = await axios.patch(`https://glimpsecommunity.herokuapp.com/api/user/follow/${followReaderID}`);
+      const response = await axios.patch(`https://glimpse-backend-production.up.railway.app/api/user/follow/${followReaderID}`);
       if (response.data.success) {
         return response.data;
       }
@@ -84,7 +84,7 @@ export const unfollowReader = createAsyncThunk(
   "/api/user/unfollow/v1/",
   async (unfollowReaderID) => {
     try {
-      const response = await axios.patch(`https://glimpsecommunity.herokuapp.com/api/user/unfollow/v1/${unfollowReaderID}`);
+      const response = await axios.patch(`https://glimpse-backend-production.up.railway.app/api/user/unfollow/v1/${unfollowReaderID}`);
       if (response.data.success) {
         return response.data;
       }
@@ -103,7 +103,7 @@ export const getPostsByUserId = createAsyncThunk(
     console.log(userId)
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/user/${userId}`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/user/${userId}`);
 
       if (res.data) {
         // console.log(res)

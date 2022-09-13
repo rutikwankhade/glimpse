@@ -8,7 +8,7 @@ export const getExploreFeed = createAsyncThunk(
 
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/`);
 
       if (res.data) {
         // console.log(res)
@@ -29,7 +29,7 @@ export const getUserFeed = createAsyncThunk(
   async () => {
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/feed/userfeed`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/feed/userfeed`);
 
       if (res.data) {
         console.log(res.data)
@@ -74,7 +74,7 @@ export const postBookReview = createAsyncThunk(
     // console.log(body)
 
     try {
-      const res = await axios.post('https://glimpsecommunity.herokuapp.com/api/post/addpost', body, config);
+      const res = await axios.post('https://glimpse-backend-production.up.railway.app/api/post/addpost', body, config);
 
       if (res.data) {
         return res.data;
@@ -96,7 +96,7 @@ export const getReviewsByBookId = createAsyncThunk(
 
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/${bookId}`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/${bookId}`);
 
       if (res.data) {
         console.log(res)
@@ -118,7 +118,7 @@ export const getLatestUsers = createAsyncThunk(
   async () => {
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/user/`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/user/`);
 
       if (res.data) {
         console.log(res)

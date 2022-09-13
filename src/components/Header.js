@@ -59,7 +59,7 @@ const Header = () => {
 
                         <SearchBar />
 
-                        <span className="text-xl md:flex hidden mx-2 mb-2 font-semibold">{user.username}</span>
+                        <span className="text-md w-max md:flex hidden mx-2 mb-2 font-semibold">{user.username}</span>
 
 
                         <Popover className="relative inline-block">
@@ -102,14 +102,14 @@ const Header = () => {
                     </div>
 
                     :
-                    <div className=" md:w-3/12 ml-auto mr-4 ">
+                    <div className="flex  ml-auto mr-4 ">
 
                         <Link href="/signup" >
-                            <a className="  bg-white p-2 hover:text-violet-500 px-6 md:text-lg text-md font-semibold ">Sign up</a>
+                            <a className=" ml-auto mr-2 bg-white p-2 hover:text-violet-500 px-6 md:text-lg text-md font-semibold ">Sign up</a>
                         </Link>
-                        <Link href="/login" >
+                        {/* <Link href="/login" >
                             <a className=" bg-white hover:text-violet-500 border rounded p-2 px-6 md:text-lg text-md font-semibold ">Log In</a>
-                        </Link>
+                        </Link> */}
                     </div>
                 }
 
