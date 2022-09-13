@@ -23,7 +23,7 @@ const Header = () => {
     }
 
     return (
-        <div className="sticky z-20 top-0 border-b bg-white flex items-center p-4 h-max md:px-20">
+        <div className="sticky font-manrope z-20 top-0 border-b bg-white flex items-center p-4 h-max md:px-20">
 
             <Link href="/">
                 <a className="text-xl ml-2 font-semibold cursor-pointer flex text-gray-800 w-40">📕 Glimpse</a>

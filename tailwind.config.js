@@ -6,10 +6,10 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
-     fontFamily: {
-      
-      'body': 'Arimo'
+   extend: {
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+      },
     },
   },
   plugins: [],

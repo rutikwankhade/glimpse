@@ -23,15 +23,15 @@ function MainApp({ Component, pageProps: { ...pageProps } }) {
 
 
     return getLayout(
-        <div className="w-full">
-             <Head>
-        <title>bookclub</title>
-        <link rel="icon" href={favicon.src} />
-      </Head>
+        <div className="w-full font-manrope">
+            <Head>
+                <title>bookclub</title>
+                <link rel="icon" href={favicon.src} />
+            </Head>
             {/* <Header /> */}
             <div className="w-full">
-                    <Component {...pageProps} />
-                </div>
+                <Component {...pageProps} />
+            </div>
         </div>
     )
 }
