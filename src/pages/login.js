@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { loginUser } from "../app/features/authSlice";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
@@ -39,6 +40,13 @@ const Login = () => {
         }
 
     }, [isAuthenticated, user]);
+
+
+    useEffect(() => {
+        if (!isFetching && message) {
+            toast.error(message)
+        }
+    },[isFetching,message])
 
     return (
         <div className="w-full bg-fuchsia-50 h-screen">

@@ -11,6 +11,7 @@ import cheveronDownIcon from '../../assets/icons/cheveron-down.svg'
 import Image from 'next/image';
 import GlimpsePost from '../../components/GlimpsePost';
 import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 
 const options = [
@@ -22,10 +23,12 @@ const options = [
 
 const BookInfo = (params) => {
 
+  const router = useRouter()
 
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector((state) => state.auth);
-    const { isFetching, bookReviews } = useSelector((state) => state.feed);
+    const { isFetchingFeed, bookReviews } = useSelector((state) => state.feed);
+    const { isFetching } = useSelector((state) => state.profile);
 
     const [info, setInfo] = useState()
     const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +83,13 @@ const BookInfo = (params) => {
 
 
         dispatch(postBookReview(review))
+                dispatch(getReviewsByBookId(params.params.bookId))
 
+        if (!isFetchingFeed) {
+
+            toast.success('Glimpse submitted succesfully!')
+    
+}
 
         setIsOpen(false)
     }
@@ -100,11 +109,17 @@ const BookInfo = (params) => {
         //add book to collection
         dispatch(addBookToLibrary(book))
 
+        if (!isFetching) {
+            toast.success('Library updated successfully')
+        }
+
     }
 
 
     return (
         <div className="bg-gray-50 p-2 w-full items-center justify-center">
+           <div><Toaster/></div>
+
             <Transition appear show={isOpen}>
 
                 <Dialog

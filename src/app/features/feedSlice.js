@@ -143,7 +143,7 @@ export const feedSlice = createSlice({
     exploreFeed: [],
     bookReviews: [],
     latestUsers: [],
-    isFetching: false,
+    isFetchingFeed: false,
     message: "",
   },
   reducers: {
@@ -153,43 +153,54 @@ export const feedSlice = createSlice({
 
   extraReducers: {
     [getExploreFeed.pending]: (state, action) => {
-      state.isFetching = true;
+      state.isFetchingFeed = true;
 
     },
     [getExploreFeed.fulfilled]: (state, action) => {
       //   console.log(action.payload.data)
       state.exploreFeed = action.payload.posts;
-      state.isFetching = false;
+      state.isFetchingFeed = false;
       // state.status = "success";
 
     },
 
     [getUserFeed.pending]: (state, action) => {
-      state.isFetching = true;
+      state.isFetchingFeed = true;
 
     },
     [getUserFeed.fulfilled]: (state, action) => {
       //   console.log(action.payload.data)
       state.userFeed = action.payload.posts;
-      state.isFetching = false;
+      state.isFetchingFeed = false;
       // state.status = "success";
 
     },
 
 
     [getReviewsByBookId.pending]: (state, action) => {
-      state.isFetching = true;
+      state.isFetchingFeed = true;
 
     },
     [getReviewsByBookId.fulfilled]: (state, action) => {
       //   console.log(action.payload.data)
       state.bookReviews = action.payload.reviews;
-      state.isFetching = false;
+      state.isFetchingFeed = false;
+      // state.status = "success";
+
+    },
+    [postBookReview.pending]: (state, action) => {
+      state.isFetchingFeed = true;
+
+    },
+    [postBookReview.fulfilled]: (state, action) => {
+      //   console.log(action.payload.data)
+      state.isFetchingFeed = false;
       // state.status = "success";
 
     },
 
-   
+
+
     [getLatestUsers.fulfilled]: (state, action) => {
       //   console.log(action.payload.data)
       state.latestUsers = action.payload.users;

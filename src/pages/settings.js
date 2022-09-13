@@ -2,9 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import HomeLayout from "../components/HomeLayout";
 import { useState, useEffect } from 'react'
 import { updateUserData } from "../app/features/authSlice";
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 const Settings = () => {
     const dispatch = useDispatch()
+    const router = useRouter()
 
     const { user, isAuthenticated, userId, updating } = useSelector((state) => state.auth);
 
@@ -18,7 +21,7 @@ const Settings = () => {
         }
     }, [isAuthenticated])
 
-    
+
 
     const handleUploadImage = async (e) => {
         setImage(e.target.files[0])
@@ -39,6 +42,13 @@ const Settings = () => {
                 console.log(res)
                 setAvatarUrl(res.url);
             }
+
+
+            if (!updating) {
+                toast.success('Profile updated successfully')
+                router.push(`/profile/${user.userId}`)
+
+            }
         } catch (error) {
             setIsUploading(false);
         }
@@ -48,7 +58,8 @@ const Settings = () => {
 
 
     return (
-        <div className="bg-gray-50 p-2 ">
+        <div className="bg-gray-50 p-2 pb-40">
+            <div><Toaster /></div>
 
             <div className="rounded-xl p-10 md:w-1/2 mx-auto mt-10 border  flex flex-col justify-center bg-white">
                 <h1 className="text-xl font-semibold my-4">Update Profile</h1>
@@ -65,13 +76,13 @@ const Settings = () => {
                     />
 
                     <span>{isUploading ? "uploading..." : ""}</span>
-                   
+
                 </div>
-                 <button
-                        onClick={() => dispatch(updateUserData({ userId: userId, avatarUrl: avatarUrl }))}
-                        className={`${image ? '' : 'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 w-40 my-4 rounded-xl`}>
-                        {updating ? 'updating...' : 'Update'}
-                    </button>
+                <button
+                    onClick={() => dispatch(updateUserData({ userId: userId, avatarUrl: avatarUrl }))}
+                    className={`${image ? '' : 'disabled:'} bg-gray-700 text-white text-xl p-2 px-8 w-40 my-4 rounded-xl`}>
+                    {updating ? 'updating...' : 'Update'}
+                </button>
             </div>
 
         </div>

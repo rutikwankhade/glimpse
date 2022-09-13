@@ -8,7 +8,7 @@ export const getReviewsByBookId = createAsyncThunk(
 
 
     try {
-      const res = await axios.get(`https://glimpsecommunity.herokuapp.com/api/post/${bookId}`);
+      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/${bookId}`);
 
       if (res.data) {
         // console.log(res)
@@ -18,7 +18,7 @@ export const getReviewsByBookId = createAsyncThunk(
 
     } catch (err) {
 
-      console.log("Couldn't grt profile", err);
+      console.log("Couldn't get profile", err);
     }
   }
 );
