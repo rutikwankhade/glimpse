@@ -52,7 +52,7 @@ function BookClub() {
           }
         </div>
 
-        {/* <div className="bg-white p-10 rounded-xl shadow-sm top-24 md:w-4/12 mx-10 my-4 sticky h-max">
+        <div className="bg-white p-10 rounded-xl shadow-sm top-24 md:w-4/12 mx-10 my-4 sticky h-max">
 
           <div>
             <h2 className="text-2xl font-semibold text-gray-700 pb-4">Discover new readers from the community</h2>
@@ -67,7 +67,7 @@ function BookClub() {
               </Link>
             )
           })}
-        </div> */}
+        </div>
 
 
 
