@@ -8,7 +8,7 @@ export const getReviewsByBookId = createAsyncThunk(
 
 
     try {
-      const res = await axios.get(`https://glimpse-backend-production.up.railway.app/api/post/${bookId}`);
+      const res = await axios.get(`https://glimpse-backend.onrender.com/api/post/${bookId}`);
 
       if (res.data) {
         // console.log(res)

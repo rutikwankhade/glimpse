@@ -52,7 +52,7 @@ function BookClub() {
           }
         </div>
 
-        <div className="bg-white p-10 rounded-xl shadow-sm top-24 md:w-4/12 mx-10 my-4 sticky h-max">
+        {/* <div className="bg-white p-10 rounded-xl shadow-sm top-24 md:w-4/12 mx-10 my-4 sticky h-max">
 
           <div>
             <h2 className="text-2xl font-semibold text-gray-700 pb-4">Discover new readers from the community</h2>
@@ -61,13 +61,13 @@ function BookClub() {
             return (
               <Link href={`/profile/${user._id}`} key={user._id}>
                 <div className="hover:bg-gray-50 cursor-pointer p-2 flex items-center border-b ">
-                  <Image src={user.avatar} width="40" height="40" className="rounded-full" />
+                  <Image src={user.avatar && user.avatar} width="40" height="40" className="rounded-full" />
                   <span className="text-md mx-4 font-medium text-gray-500">{user.username}</span>
                 </div>
               </Link>
             )
           })}
-        </div>
+        </div> */}
 
 
 

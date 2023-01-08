@@ -12,7 +12,7 @@ export const loadUser = createAsyncThunk(
     }
 
     try {
-      const res = await axios.get('https://glimpse-backend-production.up.railway.app/api/auth/token');
+      const res = await axios.get('https://glimpse-backend.onrender.com/api/auth/token');
       if (res.data) {
         return res.data;
       }
@@ -40,7 +40,7 @@ export const registerUser = createAsyncThunk(
     console.log(body)
 
     try {
-      const res = await axios.post('https://glimpse-backend-production.up.railway.app/api/auth/signup', body, config);
+      const res = await axios.post('https://glimpse-backend.onrender.com/api/auth/signup', body, config);
 
       if (res.data.success) {
         return res.data;
@@ -72,7 +72,7 @@ export const loginUser = createAsyncThunk(
     console.log(body)
 
     try {
-      const res = await axios.post('https://glimpse-backend-production.up.railway.app/api/auth/login', body, config);
+      const res = await axios.post('https://glimpse-backend.onrender.com/api/auth/login', body, config);
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token)
@@ -103,7 +103,7 @@ export const updateUserData = createAsyncThunk(
 
     // console.log(userId)
     try {
-      const res = await axios.post(`https://glimpse-backend-production.up.railway.app/api/user/update/profile/${userId}`, body, config);
+      const res = await axios.post(`https://glimpse-backend.onrender.com/api/user/update/profile/${userId}`, body, config);
       if (res.data.success) {
         console.log(res.data)
         return res.data;
